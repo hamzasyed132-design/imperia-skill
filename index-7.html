@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Imperia Skill</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Cpath d=%27M20 2L35.6 11V29L20 38L4.4 29V11Z%27 fill=%27%232F6BFF%27 stroke=%27%232F6BFF%27 stroke-width=%272%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M20 2L35.6 11L20 20L4.4 11Z%27 fill=%27%235B8CFF%27/%3E%3Crect x=%2716.5%27 y=%2717%27 width=%277%27 height=%2716%27 rx=%273.5%27 fill=%27%23fff%27/%3E%3Cpath d=%27M20 5.2l3.6 3.6L20 12.4l-3.6-3.6z%27 fill=%27%23FFB020%27/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--p:#2F6BFF;--ink:#0B1020;--mut:#51607A;--bg:#F4F7FC;--ln:#E3E8F0}
+*{box-sizing:border-box}body{margin:0;font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.w{max-width:1100px;margin:0 auto;padding:0 20px}
+nav{background:var(--ink);color:#fff;position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(255,255,255,.08)}nav .w{padding:14px 20px}nav .btn{white-space:nowrap}@media(max-width:420px){nav .btn{padding:9px 14px!important;font-size:13px!important}}.nl{display:flex;gap:28px;font-weight:600;font-size:14px;color:#C7D2FE}.nl a:hover{color:#fff}nav .logo i{color:#8DB0FF}@media(max-width:820px){.nl{display:none}}section[id]{scroll-margin-top:70px}
+.logo{display:flex;align-items:center;gap:10px;line-height:1.1}.logo b{display:block;font-size:19px;letter-spacing:2px}.logo i{font-style:normal;font-size:10px;font-weight:700;letter-spacing:6px;color:var(--p)}
+.btn{display:inline-block;background:var(--p);color:#fff;border:0;border-radius:12px;padding:14px 26px;font:700 16px 'Plus Jakarta Sans',sans-serif;cursor:pointer;text-align:center}
+.btn.o{background:#fff;color:var(--ink);border:1px solid #D0D7E2}.btn.full{width:100%}.btn:disabled{opacity:.75}.btn:disabled::after{content:"";display:inline-block;width:14px;height:14px;margin-left:10px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:rot .7s linear infinite;vertical-align:-2px}.btn.o:disabled::after{border-color:var(--ink);border-top-color:transparent}
+.sec{padding:64px 20px}.wh{background:#fff}
+h1{font-size:clamp(32px,6vw,52px);line-height:1.12;margin:16px 0;letter-spacing:-1px}h2{font-size:clamp(26px,4vw,36px);margin:0 0 24px}h3{margin:0 0 8px}
+.tag{display:inline-block;background:#E0EDFF;color:var(--p);font-weight:700;font-size:13px;padding:6px 14px;border-radius:99px}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.c{background:#fff;border:1px solid var(--ln);border-radius:18px;padding:24px}.wh .c{background:var(--bg)}
+.mut{color:var(--mut)}
+.box{max-width:460px;margin:32px auto;background:#fff;border:1px solid var(--ln);border-radius:22px;padding:28px}
+label{display:block;font-weight:700;font-size:14px;margin:14px 0 6px}
+input,select{width:100%;border:1px solid #D0D7E2;border-radius:10px;padding:13px;font:16px 'Plus Jakarta Sans',sans-serif;background:#fff}
+.err{color:#B42318;font-size:14px;min-height:20px;margin:10px 0}
+.st{display:flex;gap:8px;margin-bottom:20px}.st span{flex:1;text-align:center;border:1px solid #D0D7E2;border-radius:99px;padding:6px 2px;font-size:13px;font-weight:700;color:var(--mut)}.st .on{background:var(--p);border-color:var(--p);color:#fff}
+.pay{background:var(--bg);border:1px solid #D0E0FA;border-radius:14px;padding:16px;margin:16px 0}
+.aff{background:var(--p);color:#fff}
+.row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--ln)}
+@keyframes rot{to{transform:rotate(360deg)}}@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.14);opacity:.7}}@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.sp{width:28px;height:28px;border:3px solid #D0E0FA;border-top-color:var(--p);border-radius:50%;animation:rot .8s linear infinite;margin:10px 0}
+.splash{min-height:100vh;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;position:relative;overflow:hidden}
+.sg{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(47,107,255,.5),transparent);animation:glow 2.4s ease-in-out infinite}
+@keyframes glow{0%,100%{transform:scale(.9);opacity:.7}50%{transform:scale(1.12);opacity:1}}
+.sl{position:relative;overflow:visible}
+.dr{stroke-dasharray:130;stroke-dashoffset:130;animation:dr 1s ease forwards}@keyframes dr{to{stroke-dashoffset:0}}
+.fi{opacity:0;animation:fi .6s ease forwards}@keyframes fi{to{opacity:1}}
+.bar{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);animation:grow .55s cubic-bezier(.2,.9,.3,1.2) 1s forwards}@keyframes grow{to{transform:scaleY(1)}}
+.dm{opacity:0;transform-box:fill-box;transform-origin:center;animation:drop .5s ease 1.4s forwards}@keyframes drop{from{opacity:0;transform:translateY(-10px) scale(.3)}to{opacity:1;transform:none}}
+.sw{position:relative;text-align:center;color:#fff}.sw b{display:block;font-size:26px;font-weight:800;letter-spacing:9px;padding-left:9px}.sw i{display:block;font-style:normal;font-size:11px;font-weight:700;letter-spacing:12px;padding-left:12px;color:#8DB0FF;margin-top:6px}
+.pr{width:150px;height:3px;background:rgba(255,255,255,.12);border-radius:9px;overflow:hidden;position:relative;opacity:0;animation:fi .4s ease 1.6s forwards}.pr:after{content:"";position:absolute;top:0;bottom:0;width:40%;background:#FFB020;border-radius:9px;animation:slide 1.1s ease-in-out infinite}@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+body.ld nav,body.ld footer{display:none}
+#app>*{animation:fade .35s ease}
+.th{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;color:#fff;padding:18px;display:flex;flex-direction:column;justify-content:flex-end}
+.th .tl{position:absolute;top:16px;left:18px;font-size:11px;letter-spacing:3px;font-weight:700;opacity:.85}
+.th .tg{position:absolute;top:14px;right:16px;background:#F59E0B;color:#0B1020;font-size:11px;font-weight:800;padding:3px 10px;border-radius:99px}
+.th .tt{font-size:clamp(20px,3.4vw,27px);font-weight:800;line-height:1.15;max-width:78%}
+.th .pb{position:absolute;right:16px;bottom:16px;width:46px;height:46px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
+.cc{background:#fff;border:1px solid var(--ln);border-radius:18px;padding:12px;cursor:pointer;transition:transform .2s,box-shadow .2s}.cc:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(11,31,58,.12)}
+.tabs{display:flex;background:#fff;border:1px solid var(--ln);border-radius:12px;padding:4px}.tabs button{border:0;background:none;padding:10px 20px;border-radius:9px;font:700 14px 'Plus Jakarta Sans',sans-serif;color:var(--mut);cursor:pointer}.tabs .on{background:var(--p);color:#fff}
+.vp{position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden;background:#000}.vp iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ls{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:none;border:0;border-radius:10px;padding:10px;font:600 14px 'Plus Jakarta Sans',sans-serif;color:var(--ink);cursor:pointer}.ls:hover{background:var(--bg)}.ls.on{background:#E0EDFF;color:var(--p)}
+.ls .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:13px}.ls.on .n{background:var(--p);color:#fff}
+.dk{background:var(--ink);color:#fff}
+.au{display:flex;flex-wrap:wrap;min-height:calc(100vh - 66px)}
+.al{flex:1 1 420px;background-color:var(--ink);background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:40px 40px;color:#fff;padding:64px 48px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.al:before{content:"";position:absolute;width:480px;height:480px;left:-140px;bottom:-200px;background:radial-gradient(closest-side,rgba(47,107,255,.45),transparent);pointer-events:none}.al>*{position:relative}
+.al h1{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-1.5px;margin:8px 0 14px}.al p{color:#AEB9D6;max-width:420px;margin:0 0 24px;font-size:17px}
+.av{display:flex;flex-direction:column;gap:10px;font-weight:600;color:#C7D2FE}
+.ar{flex:1 1 420px;display:flex;align-items:center;justify-content:center;padding:40px 20px;background:var(--bg)}
+.fc{width:100%;max-width:440px;background:#fff;border:1px solid var(--ln);border-radius:24px;padding:32px;box-shadow:0 24px 60px rgba(11,16,32,.08)}
+.pw{position:relative}.pw input{padding-right:72px}.eye{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--p);font:700 13px 'Plus Jakarta Sans',sans-serif;cursor:pointer;padding:10px}
+.hint{font-size:12px;color:var(--mut);margin-top:6px}
+@media(max-width:820px){.al{padding:36px 24px}.al p{font-size:15px;margin-bottom:0}.av{display:none}.al h1{font-size:32px}.fc{padding:26px 22px}}
+.wb{background-color:var(--ink);background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:40px 40px;border-radius:24px;padding:28px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;position:relative;overflow:hidden}
+.wb:before{content:"";position:absolute;width:360px;height:360px;right:-100px;top:-160px;background:radial-gradient(closest-side,rgba(47,107,255,.5),transparent);pointer-events:none}.wb>*{position:relative}
+.st2{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 18px;min-width:120px}.st2 b{display:block;color:#fff;font-size:20px}.st2 span{color:#AEB9D6;font-size:12px;font-weight:600}
+.th2{background:var(--ink);border-radius:24px;padding:16px;display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+.pl{flex:1 1 280px;background:#131A33;border:1px solid #232C52;border-radius:16px;padding:10px;max-height:520px;overflow:auto}.pl .hd{color:#fff;font-weight:700;padding:8px 10px}
+.pl .ls{color:#DDE5FF}.pl .ls:hover{background:#1B2547}.pl .ls.on{background:#1E2B5E;color:#fff}.pl .ls .n{background:#232C52;color:#fff}.pl .ls.on .n{background:#FFB020;color:#0B1020}
+.hero{padding:72px 0 96px;position:relative;overflow:hidden;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:48px 48px}.hero:before{content:"";position:absolute;width:560px;height:560px;right:-140px;top:-180px;background:radial-gradient(closest-side,rgba(47,107,255,.5),transparent);pointer-events:none}.hero .w{position:relative}.fl2{position:absolute;background:#fff;color:var(--ink);border-radius:14px;padding:10px 14px;font-weight:700;font-size:13px;box-shadow:0 14px 40px rgba(0,0,0,.35);display:flex;gap:8px;align-items:center;z-index:2}
+.hero h1{font-size:clamp(40px,6.6vw,68px);line-height:1.04;letter-spacing:-2px;margin:22px 0}
+.hero h1 em{font-style:normal;color:#FFB020}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:6px 14px;font-size:13px;font-weight:600;color:#C7D2FE}
+.dot{width:8px;height:8px;border-radius:50%;background:#34D399;display:inline-block}
+.am{background:#FFB020;color:#0B1020}.gh{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3)}
+.mock{background:#131A33;border:1px solid #232C52;border-radius:22px;padding:14px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.scr{aspect-ratio:16/9;border-radius:14px;background:#2F6BFF;position:relative;color:#fff}
+.scr .tl2{position:absolute;top:14px;left:18px;font-size:11px;letter-spacing:3px;font-weight:700;opacity:.85}
+.pb2{position:absolute;right:16px;bottom:14px;width:48px;height:48px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
+.mr{display:flex;gap:12px;align-items:center;padding:10px 6px;font-size:14px;font-weight:600;color:#DDE5FF;border-top:1px solid #232C52}
+.mk{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid #4B5A8F}.mk.on{background:#34D399;border-color:#34D399}
+.ic{flex:none;width:46px;height:46px;border-radius:12px;background:#E0EDFF;display:flex;align-items:center;justify-content:center}
+.sn{width:44px;height:44px;border-radius:12px;background:var(--ink);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+.ck{display:flex;gap:12px;align-items:center;padding:10px 0;font-weight:600}.ck svg{flex:none}
+.lbl{font-size:13px;font-weight:700;letter-spacing:2px;color:var(--p);margin-bottom:10px}
+.fq{background:#fff;border:1px solid var(--ln);border-radius:14px;padding:18px 22px;margin-bottom:12px}.fq summary{font-weight:700;cursor:pointer}
+.fl{display:flex;flex-wrap:wrap;gap:12px 28px;font-weight:600}.fl a:hover,footer a:hover{color:#fff}footer .logo b{color:#fff}footer .logo i{color:#8DB0FF}
+footer{background:var(--ink);color:#AEB9CC;text-align:left;padding:56px 0 28px;font-size:14px}
+/* ===== v3 premium theme ===== */
+:root{--p2:#5B8CFF;--gold:#FFB020}
+body{background:#F3F6FC;-webkit-font-smoothing:antialiased}
+h1,h2{letter-spacing:-.03em}
+.btn{border-radius:14px;box-shadow:0 8px 22px rgba(47,107,255,.26);transition:transform .15s,box-shadow .15s,opacity .15s}.btn:hover{transform:translateY(-1px)}.btn.am{box-shadow:0 8px 22px rgba(255,176,32,.3)}.btn.o,.btn.gh{box-shadow:none}
+.btn.sm{padding:9px 16px;font-size:13px;border-radius:10px;box-shadow:none}.btn.dng{color:#B42318;border-color:#F4C7C2}
+.c{border-radius:20px;box-shadow:0 1px 2px rgba(11,16,32,.04),0 14px 34px rgba(11,16,32,.04)}
+.lbl{display:inline-block;background:#E8F0FF;color:var(--p);padding:5px 12px;border-radius:99px;font-size:12px;letter-spacing:2px}.dk .lbl,.al .lbl,.cbd .lbl,.promo .lbl{background:rgba(255,255,255,.08)}
+.sec{padding:84px 20px}
+nav{backdrop-filter:blur(10px);background:rgba(11,16,32,.92)}
+.rv{opacity:1}body.rvon .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}body.rvon .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){body.rvon .rv{opacity:1;transform:none;transition:none}}
+/* thumbnails */
+.th{background:#0B1020;padding:0}.th .art{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.th .tl,.th .tg,.th .tt,.th .pb{z-index:2}.th .tt{position:relative;max-width:58%;margin:0 0 18px 18px;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.th .tl{left:18px;top:16px}.th .tg{top:14px;right:16px;background:#FFB020}
+.th img{position:absolute;inset:0}
+/* hero */
+.hero{padding:84px 0 110px;background-image:radial-gradient(900px 420px at 85% -10%,rgba(47,107,255,.55),transparent 60%),radial-gradient(700px 360px at 0% 100%,rgba(91,140,255,.25),transparent 60%),linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:auto,auto,48px 48px,48px 48px}
+.hw{display:flex;flex-wrap:wrap;gap:56px;align-items:center}.hl{flex:1 1 460px}.hv{flex:1 1 380px;position:relative}
+.hero h1{font-size:clamp(38px,6.2vw,66px);line-height:1.04;letter-spacing:-.04em;margin:22px 0}
+.gt{font-style:normal;background:linear-gradient(100deg,#9DBBFF 10%,#fff 50%,#FFB020 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hp{font-size:19px;color:#AEB9D6;max-width:540px;margin:0 0 32px}
+.tr{display:flex;flex-wrap:wrap;gap:10px 26px;font-size:14px;font-weight:600;color:#C7D2FE}.tr span{display:inline-flex;gap:6px;align-items:center}
+.mock{background:linear-gradient(180deg,#151D3B,#0F1630);border:1px solid #2A3566;border-radius:24px;padding:14px;box-shadow:0 40px 90px rgba(0,0,0,.5)}.mock .th{border-radius:16px}
+.fl2{position:absolute;z-index:3;background:#fff;color:var(--ink);font-weight:700;font-size:13px;padding:9px 16px;border-radius:99px;box-shadow:0 14px 34px rgba(0,0,0,.28);animation:flt 4s ease-in-out infinite}.fl2:nth-child(2){animation-delay:1.4s}@keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.tbar{background:#fff;border-bottom:1px solid var(--ln)}.fe2{display:flex;gap:14px;align-items:flex-start}.fe2 b{display:block}.fe2 span{display:block;color:var(--mut);font-size:14px}
+.cg3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.cvc{background:#fff;border:1px solid var(--ln);border-radius:24px;padding:12px;box-shadow:0 20px 50px rgba(11,16,32,.06);transition:transform .25s,box-shadow .25s}.cvc:hover{transform:translateY(-5px);box-shadow:0 30px 70px rgba(11,16,32,.12)}
+.cvb{padding:18px 8px 8px}.cvb h3{font-size:24px;letter-spacing:-.6px}.cvb>p{font-size:15px;margin:0 0 14px}
+.wl2{background:var(--bg);border-radius:16px;padding:14px 16px;margin-bottom:18px}.wl2>b{font-size:13px;letter-spacing:1px;color:var(--mut);text-transform:uppercase}.wl2 .ck{padding:6px 0;font-size:14px}
+.pth{display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start}.pl1{flex:1 1 340px;position:sticky;top:96px}.pl1 h2{font-size:clamp(28px,4.4vw,42px);letter-spacing:-.04em}.pl1 p{margin:0 0 22px;font-size:17px}.pl2{flex:1.3 1 420px}
+.mod summary{display:flex;gap:14px;align-items:center;font-size:18px}.mn{flex:none;width:34px;height:34px;border-radius:11px;background:var(--ink);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px}
+.fe{display:flex;flex-direction:column;gap:6px}.fe .it{margin-bottom:8px}.fe h3{margin:0;font-size:18px}.fe p{margin:0;font-size:14.5px}
+.stp{position:relative}.stp h3{margin-top:14px}.stp p{margin:0;font-size:15px}
+.prc{display:flex;flex-wrap:wrap;gap:48px;align-items:center}.pr1{flex:1 1 380px}.pr1 h2{font-size:clamp(28px,4.4vw,42px)}.pr1>p{font-size:17px}
+.pc2{flex:1 1 340px;background:linear-gradient(160deg,#0B1020,#14214F);color:#fff;border-radius:28px;padding:36px;box-shadow:0 40px 90px rgba(11,16,32,.3);border:1px solid #2A3566}
+.afw{display:flex;flex-wrap:wrap;gap:56px;align-items:center}.afw .avr{margin-bottom:16px}
+.calcp{padding:28px}
+.cta{background:linear-gradient(120deg,#1E4FD8,#2F6BFF 55%,#5B8CFF);color:#fff;text-align:center;padding:84px 20px;position:relative;overflow:hidden}.cta h2{font-size:clamp(30px,5vw,46px);letter-spacing:-.04em;margin-bottom:12px}.cta p{margin:0 0 26px;opacity:.92;font-size:18px}
+.fg{display:flex;flex-wrap:wrap;justify-content:space-between;gap:36px}.fg h4{margin:0 0 12px;color:#fff;font-size:14px;letter-spacing:1px;text-transform:uppercase}.fg a{display:block;padding:4px 0}.fg a:hover{color:#fff}.fb{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:36px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);font-size:13px}
+/* auth */
+.avr{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}.avr b{display:block;color:#fff;font-size:16px}.avr span{display:block;color:#AEB9D6;font-size:14px}.avr .it{background:rgba(255,255,255,.08);color:#9DBBFF;border:1px solid rgba(255,255,255,.12)}.avr .sn{flex:none}
+.av{display:flex;flex-direction:column;gap:0}
+.note{background:#EEF4FF;border:1px solid #D0E0FA;color:#1E3F9E;border-radius:12px;padding:10px 14px;font-size:13.5px}
+/* dashboard */
+.wb h2{margin:8px 0 4px;font-size:clamp(24px,4vw,34px);color:#fff;letter-spacing:-.6px}.wl{display:flex;gap:16px;align-items:center;min-width:0}
+.avt{flex:none;width:62px;height:62px;border-radius:19px;background:linear-gradient(135deg,#5B8CFF,#2F6BFF);color:#fff;display:flex;align-items:center;justify-content:center;font-size:27px;font-weight:800;box-shadow:0 12px 28px rgba(47,107,255,.5)}
+.mb{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:1.5px;color:#9DBBFF}.sub{color:#AEB9D6;font-size:14px}.stg{display:flex;gap:12px;flex-wrap:wrap}
+.tb2{display:flex;margin:22px 0;overflow-x:auto;width:100%}.tb2 button{flex:1;white-space:nowrap}
+@media(max-width:520px){.tb2 button{padding:10px 12px;font-size:13px}.avt{width:50px;height:50px;font-size:22px}.hero{padding:56px 0 80px}.sec{padding:60px 20px}}
+.it{flex:none;width:46px;height:46px;border-radius:14px;background:#E8F0FF;color:var(--p);display:flex;align-items:center;justify-content:center}.it.big{width:68px;height:68px;border-radius:22px;margin:0 auto 14px}
+.sh{margin:0 0 16px}.sh h3{margin:0;font-size:clamp(20px,3vw,25px);letter-spacing:-.5px}.sh p{margin:4px 0 0;color:var(--mut);font-size:14.5px}
+.pgb{height:8px;border-radius:9px;background:#E3E8F0;overflow:hidden}.pgb i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,var(--p),#5B8CFF)}.cbd .pgb,.pl .pgb,.wb .pgb{background:rgba(255,255,255,.14)}.pgb i{min-width:0}
+.pgt{display:flex;justify-content:space-between;font-size:13px;color:var(--mut);margin-top:6px;font-weight:600}.cbd .pgt{color:#AEB9D6}.cbd .pgt b{color:#fff}
+.cont{display:flex;flex-wrap:wrap;background:var(--ink);border-radius:26px;overflow:hidden;color:#fff;border:1px solid #1C2650;box-shadow:0 26px 64px rgba(11,16,32,.22)}.cth{flex:1 1 320px;padding:16px}.cbd{flex:1 1 320px;padding:28px;display:flex;flex-direction:column;justify-content:center}.cbd h2{margin:10px 0 8px;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.04em}.cbd p{color:#AEB9D6;margin:0 0 18px}.cbd .btn{margin-top:16px;align-self:flex-start}
+.ring{flex:none;width:98px;height:98px;border-radius:50%;background:conic-gradient(var(--p) var(--v),#E3E8F0 0);display:flex;align-items:center;justify-content:center}.ring>div{width:76px;height:76px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center}.ring b{font-size:21px;line-height:1}.ring span{font-size:11px;color:var(--mut);font-weight:600}.rw{display:flex;gap:18px;align-items:center}
+.cl{display:flex;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--ln)}.cl:first-child{border-top:0}.cl>div{flex:1;min-width:0}.cl b{display:block;font-size:14px}.cl>div span{display:block;font-size:12.5px;color:var(--mut)}
+.cm{flex:none;width:24px;height:24px;border-radius:50%;border:2px solid #C9D3E6;display:flex;align-items:center;justify-content:center}.cl.ok .cm{background:#10B981;border-color:#10B981}.cl.ok b{color:var(--mut);text-decoration:line-through}
+.mb2{flex:none;border:1px solid var(--ln);background:#fff;border-radius:99px;padding:6px 14px;font:700 12px 'Plus Jakarta Sans',sans-serif;color:var(--p);cursor:pointer}
+.chip{display:inline-block;background:#EEF2FA;color:#41506B;font-size:12px;font-weight:700;padding:4px 11px;border-radius:99px}.chip.paid{background:#DCFAE6;color:#067647}.chip.pending{background:#FEF0C7;color:#B54708}.chip.rejected{background:#FEE4E2;color:#B42318}.chip.dk2{background:rgba(255,255,255,.1);color:#DDE5FF;border:1px solid rgba(255,255,255,.14)}.chs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.promo{margin-top:20px;border-radius:26px;padding:32px;background-color:var(--ink);background-image:radial-gradient(520px 260px at 92% 0,rgba(47,107,255,.6),transparent),linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:auto,40px 40px,40px 40px;color:#fff;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}.promo>div:first-child{flex:1 1 360px}.promo h2{margin:8px 0 8px;font-size:clamp(22px,3.4vw,30px);letter-spacing:-.04em}.promo p{margin:0;color:#AEB9D6}.pbtn{display:flex;gap:10px;flex-wrap:wrap}.promo input{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#fff}
+.rd{position:relative;overflow:hidden}.rd>*{position:relative}.rn{position:absolute!important;right:16px;top:6px;font-size:58px;font-weight:800;color:#EAF0FB;line-height:1}
+.pk{display:flex;gap:14px;align-items:flex-start}
+.mini{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--ln);border-radius:16px;padding:16px}.mini svg{flex:none;color:var(--p);margin-top:2px}.mini b{display:block;font-size:15px}.mini span{display:block;color:var(--mut);font-size:13.5px}
+.emp{text-align:center;padding:42px 24px}.emp h3{font-size:22px}.emp p{max-width:540px;margin:0 auto}
+.dg{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.qb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}.qb .ql{display:inline-flex;align-items:center;gap:6px;color:#8DB0FF;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-right:4px}.qb button{border:1px solid #2A3566;background:#131A33;color:#DDE5FF;border-radius:99px;padding:7px 16px;font:700 13px 'Plus Jakarta Sans',sans-serif;cursor:pointer}.qb button.on{background:#fff;color:var(--ink);border-color:#fff}.qa{margin-left:auto;font-size:12px;color:#8E9BC4}
+.big{font-size:clamp(38px,8vw,58px);font-weight:800;color:#fff;letter-spacing:-.04em;line-height:1.1}
+.sg4{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}.sc{display:flex;flex-direction:column;gap:6px;padding:18px}.sc b{font-size:22px;letter-spacing:-.5px}.sc span{color:var(--mut);font-size:13px;font-weight:600}
+.calc{margin-top:16px}.cn{font-size:15px;color:var(--mut)}.cn b{font-size:30px;color:var(--ink)}input[type=range]{padding:0;border:0;accent-color:var(--p);height:34px;background:none}.ce{font-size:clamp(30px,6vw,42px);font-weight:800;color:var(--p);letter-spacing:-.04em}
+.supp{text-align:center}
+.ls.dn .n{background:#10B981;color:#fff}.pl .ls.dn .n{background:#10B981}
+/* admin */
+.adh{margin-bottom:22px}.adh h2{margin:8px 0 4px}
+.ad{display:flex;gap:24px;align-items:flex-start}.amn{flex:1;min-width:0}
+.asn{flex:none;width:230px;position:sticky;top:84px;display:flex;flex-direction:column;gap:4px;background:#fff;border:1px solid var(--ln);border-radius:20px;padding:10px}.asn button{display:flex;align-items:center;gap:12px;border:0;background:none;padding:12px 14px;border-radius:12px;font:700 14px 'Plus Jakarta Sans',sans-serif;color:var(--mut);cursor:pointer;text-align:left}.asn button.on{background:var(--p);color:#fff}.asn button b{margin-left:auto;background:#FFB020;color:#0B1020;border-radius:99px;font-size:12px;padding:1px 8px}
+@media(max-width:860px){.ad{flex-direction:column}.asn{width:100%;position:static;flex-direction:row;overflow-x:auto;border-radius:16px}.asn button{white-space:nowrap;padding:10px 14px}}
+.fbar{display:flex;gap:8px;flex-wrap:wrap}.fbar button{border:1px solid var(--ln);background:#fff;border-radius:99px;padding:8px 16px;font:700 13px 'Plus Jakarta Sans',sans-serif;cursor:pointer;color:var(--mut)}.fbar button.on{background:var(--ink);border-color:var(--ink);color:#fff}.fbar i{font-style:normal;opacity:.7;margin-left:4px}
+.kg{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.kp{display:flex;gap:14px;align-items:center}.kp span{display:block;font-size:13px;color:var(--mut);font-weight:600}.kp b{display:block;font-size:24px;letter-spacing:-.04em}.kp em{display:block;font-style:normal;font-size:12px;color:var(--mut)}
+.bars{display:flex;align-items:flex-end;gap:10px;height:190px;margin-top:14px}.bars>div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;height:100%}.bars i{display:block;width:100%;max-width:44px;border-radius:8px 8px 0 0;background:linear-gradient(#5B8CFF,#2F6BFF)}.bars b{font-size:12px}.bars span{font-size:11px;color:var(--mut)}
+.pc{margin-bottom:14px;padding:20px}.pt{display:flex;gap:12px;align-items:center}
+.pg2{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:16px;padding-top:14px;border-top:1px solid var(--ln)}.pg2 span{display:block;font-size:12px;color:var(--mut);font-weight:600;margin-bottom:2px}.pg2 b{word-break:break-word}
+.av3{flex:none;width:40px;height:40px;border-radius:12px;background:#E8F0FF;color:var(--p);font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+.acd{margin-bottom:14px;padding:0}.acd>summary{list-style:none;display:flex;gap:14px;align-items:center;padding:14px;cursor:pointer}.acd>summary::-webkit-details-marker{display:none}.am1{flex:none;width:120px}.am1 .th{border-radius:10px}.am1 .tl,.am1 .tg,.am1 .tt{display:none}.chev{color:var(--mut);transition:transform .2s}.acd[open] .chev{transform:rotate(180deg)}
+.acb{padding:4px 20px 22px;border-top:1px solid var(--ln)}.hr{height:1px;background:var(--ln);margin:22px 0 16px}
+.lr{border:1px solid var(--ln);border-radius:14px;padding:12px;margin-bottom:10px;background:var(--bg)}.lr input{margin-top:8px}.lh{display:flex;gap:10px;align-items:center}.lh input{margin:0}
+.pn{flex:none;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;font-weight:800;font-size:13px;display:inline-flex;align-items:center;justify-content:center}
+.ql2{margin-top:8px;font-size:13px;font-weight:600;color:var(--p)}.ql2 summary{cursor:pointer}.la2{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.bulk{margin-top:18px;background:#F4F8FF;border:1px dashed #B7CBF5;border-radius:16px;padding:16px}
+textarea{width:100%;border:1px solid #D0D7E2;border-radius:10px;padding:13px;font:14px 'Plus Jakarta Sans',sans-serif;resize:vertical}code{background:#E8EEFA;padding:1px 6px;border-radius:6px;font-size:12px}
+.dg{align-items:start}
+.hv .fl2:nth-child(2){bottom:-16px!important;left:10px!important}
+.tbar .g{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+#features .g,.pkg{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+h2,.pl1 h2{line-height:1.15}
+.btn.sm:disabled::after{content:none}.btn.sm:disabled{opacity:.4}
+.row>.chip{align-self:center}
+@media(max-width:860px){.ad{align-items:stretch}.amn{width:100%}}
+</style>
+</head>
+<body class="ld">
+<nav><div class="w" id="nav"></div></nav>
+<main id="app"><div class="splash"><div class="sg"></div><svg class="sl" width="112" height="112" viewBox="0 0 40 40" aria-label="logo"><path class="dr" d="M20 2L35.6 11V29L20 38L4.4 29V11Z" fill="none" stroke="#9DBBFF" stroke-width="1.2" stroke-linejoin="round"/><g class="fi" style="animation-delay:.6s"><path d="M20 2L35.6 11V29L20 38L4.4 29V11Z" fill="#2F6BFF" stroke="#2F6BFF" stroke-width="2" stroke-linejoin="round"/><path d="M20 2L35.6 11L20 20L4.4 11Z" fill="#5B8CFF"/><path d="M20 20L35.6 11V29L20 38Z" fill="#1E4FD8"/></g><rect class="bar" x="16.5" y="17" width="7" height="16" rx="3.5" fill="#fff"/><path class="dm" d="M20 5.2l3.6 3.6L20 12.4l-3.6-3.6z" fill="#FFB020"/></svg><div class="sw fi" style="animation-delay:1.3s"><b>IMPERIA</b><i>SKILL</i></div><div class="pr"></div></div></main>
+<footer id="ft"></footer>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,onAuthStateChanged,sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import {getFirestore,doc,getDoc,setDoc,addDoc,updateDoc,collection,query,where,getDocs,runTransaction,serverTimestamp,increment,arrayUnion,orderBy,limit,deleteDoc} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+// 1) Firebase config yahan paste karein  2) ADMIN wahi email jo firestore.rules mein hai
+const CFG={apiKey:"AIzaSyAia7occDLkJYIIfYsZJPptzU12n9eb3Ss",authDomain:"imperia-skill-23669.firebaseapp.com",projectId:"imperia-skill-23669",appId:"1:733577343957:web:9196f7818ecca99168035c"};
+const ADMIN="hamzasyed132@gmail.com", COMM=1000, MIN=1500;
+
+const fb=initializeApp(CFG),auth=getAuth(fb),db=getFirestore(fb);
+const $=s=>document.querySelector(s),app=$('#app');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const E={'auth/email-already-in-use':'This email is already registered. Please log in.','auth/weak-password':'Password must be at least 6 characters.','auth/invalid-email':'Please enter a valid email address.','auth/invalid-credential':'Incorrect email or password.','auth/too-many-requests':'Too many attempts. Please try again later.','permission-denied':'You do not have permission to do this.'};
+const msg=e=>E[e.code]||e.message;
+const embed=u=>{u=String(u||'').trim();let m=u.match(/drive\.google\.com\/file\/d\/([\w-]+)/)||u.match(/drive\.google\.com\/open\?id=([\w-]+)/)||u.match(/drive\.google\.com\/uc\?[^#]*id=([\w-]+)/);if(m)return 'https://drive.google.com/file/d/'+m[1]+'/preview';m=u.match(/(?:youtu\.be\/|[?&]v=|embed\/|shorts\/)([\w-]{11})/);return m?'https://www.youtube.com/embed/'+m[1]+'?rel=0&modestbranding=1&playsinline=1':null};
+const set=h=>{app.innerHTML=h;scrollTo(0,0)};
+const BRAND=['IMPERIA','SKILL'];
+const MARK='<svg width="38" height="38" viewBox="0 0 40 40" aria-label="logo"><g><path d="M20 2L35.6 11V29L20 38L4.4 29V11Z" fill="#2F6BFF" stroke="#2F6BFF" stroke-width="2" stroke-linejoin="round"/><path d="M20 2L35.6 11L20 20L4.4 11Z" fill="#5B8CFF"/><path d="M20 20L35.6 11V29L20 38Z" fill="#1E4FD8"/></g><rect x="16.5" y="17" width="7" height="16" rx="3.5" fill="#fff"/><path d="M20 5.2l3.6 3.6L20 12.4l-3.6-3.6z" fill="#FFB020"/></svg>';
+const LOGO='<a href="#home" class="logo">'+MARK+'<div><b>'+BRAND[0]+'</b><i>'+BRAND[1]+'</i></div></a>';
+let me=null,prof=null,busy=false,tab='home',cur=null,ln=0,CS=[];
+const PAL=['#2F6BFF','#0B1020','#1E40AF','#0F2A6B'];
+const kindOf=t=>/tik/i.test(t||'')?'tk':/you|tube|yt/i.test(t||'')?'yt':'gn';
+const GRID='<path d="M0 60H640M0 120H640M0 180H640M0 240H640M0 300H640M80 0V360M160 0V360M240 0V360M320 0V360M400 0V360M480 0V360M560 0V360" stroke="#fff" stroke-opacity=".05"/>';
+const CH=(x,y,w,t,f)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="32" rx="16" '+(f?'fill="#FFB020"':'fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".3"')+'/><text x="'+(x+w/2)+'" y="'+(y+21)+'" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="13" font-weight="700" fill="'+(f?'#0B1020':'#fff')+'">'+t+'</text>';
+const ART={
+ tk:'<defs><linearGradient id="a1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1020"/><stop offset="1" stop-color="#2459E6"/></linearGradient><radialGradient id="a1b" cx=".82" cy=".25" r=".55"><stop offset="0" stop-color="#7FA2FF" stop-opacity=".6"/><stop offset="1" stop-color="#7FA2FF" stop-opacity="0"/></radialGradient></defs><rect width="640" height="360" fill="url(#a1)"/><rect width="640" height="360" fill="url(#a1b)"/>'+GRID+'<g transform="translate(440 24) rotate(9 80 150)"><rect width="164" height="308" rx="28" fill="#070B18" stroke="#9DBBFF" stroke-opacity=".55" stroke-width="2"/><rect x="9" y="9" width="146" height="290" rx="20" fill="#1A2A6B"/><rect x="9" y="9" width="146" height="290" rx="20" fill="url(#a1b)"/><circle cx="82" cy="128" r="30" fill="#fff"/><path d="M73 112l26 16-26 16z" fill="#2F6BFF"/><rect x="22" y="236" width="92" height="9" rx="4.5" fill="#fff" fill-opacity=".6"/><rect x="22" y="254" width="62" height="9" rx="4.5" fill="#fff" fill-opacity=".3"/><circle cx="134" cy="168" r="10" fill="#FFB020"/><circle cx="134" cy="200" r="10" fill="#fff" fill-opacity=".85"/><circle cx="134" cy="232" r="10" fill="#fff" fill-opacity=".85"/></g>'+CH(396,64,96,'Auto-post')+CH(384,170,84,'Faceless')+CH(402,264,88,'AI tools',1),
+ yt:'<defs><linearGradient id="a2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1020"/><stop offset="1" stop-color="#4338CA"/></linearGradient><radialGradient id="a2b" cx=".8" cy=".2" r=".6"><stop offset="0" stop-color="#8B8CFF" stop-opacity=".55"/><stop offset="1" stop-color="#8B8CFF" stop-opacity="0"/></radialGradient></defs><rect width="640" height="360" fill="url(#a2)"/><rect width="640" height="360" fill="url(#a2b)"/>'+GRID+'<g transform="translate(372 34)"><rect width="250" height="152" rx="14" fill="#070B18" stroke="#B7C4FF" stroke-opacity=".5" stroke-width="2"/><rect x="8" y="8" width="234" height="122" rx="8" fill="#2B3CB5"/><circle cx="125" cy="69" r="27" fill="#fff"/><path d="M116 54l24 15-24 15z" fill="#4338CA"/><rect x="8" y="138" width="234" height="6" rx="3" fill="#fff" fill-opacity=".2"/><rect x="8" y="138" width="132" height="6" rx="3" fill="#FFB020"/></g><g transform="translate(380 214)"><rect x="0" y="86" width="30" height="30" rx="6" fill="#fff" fill-opacity=".3"/><rect x="42" y="68" width="30" height="48" rx="6" fill="#fff" fill-opacity=".4"/><rect x="84" y="76" width="30" height="40" rx="6" fill="#fff" fill-opacity=".5"/><rect x="126" y="44" width="30" height="72" rx="6" fill="#fff" fill-opacity=".65"/><rect x="168" y="12" width="30" height="104" rx="6" fill="#FFB020"/><path d="M15 70C60 52 95 62 140 30S190 8 214 0" stroke="#fff" stroke-width="3" stroke-opacity=".8" fill="none" stroke-linecap="round"/></g>'+CH(398,176,92,'Scripts')+CH(500,176,92,'Upload'),
+ gn:'<defs><linearGradient id="a3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1020"/><stop offset="1" stop-color="#0F766E"/></linearGradient><radialGradient id="a3b" cx=".8" cy=".25" r=".6"><stop offset="0" stop-color="#34D3C0" stop-opacity=".5"/><stop offset="1" stop-color="#34D3C0" stop-opacity="0"/></radialGradient></defs><rect width="640" height="360" fill="url(#a3)"/><rect width="640" height="360" fill="url(#a3b)"/>'+GRID+'<g transform="translate(396 60)"><rect x="0" y="170" width="38" height="70" rx="8" fill="#fff" fill-opacity=".3"/><rect x="52" y="130" width="38" height="110" rx="8" fill="#fff" fill-opacity=".45"/><rect x="104" y="96" width="38" height="144" rx="8" fill="#fff" fill-opacity=".6"/><rect x="156" y="40" width="38" height="200" rx="8" fill="#FFB020"/><path d="M19 150C70 120 110 110 175 20" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-opacity=".85"/><circle cx="175" cy="20" r="9" fill="#fff"/></g><path d="M540 40l6 14 14 6-14 6-6 14-6-14-14-6 14-6z" fill="#fff" fill-opacity=".85"/>'+CH(386,28,92,'AI tools')
+};
+const imgUrl=u=>{u=String(u||'');const m=u.match(/drive\.google\.com\/file\/d\/([\w-]+)/)||u.match(/drive\.google\.com\/(?:open|uc)\?(?:[^#]*&)?id=([\w-]+)/);return m?'https://drive.google.com/thumbnail?id='+m[1]+'&sz=w1200':u};
+const thumb=(c,i)=>{const u=imgUrl(c.thumb);return /^https:\/\//.test(u)?'<div class="th"><img src="'+esc(u)+'" alt="" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover"><div class="pb"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#2F6BFF"/></svg></div></div>':'<div class="th"><svg class="art" viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+ART[kindOf(c.title)]+'</svg><div class="tl">IMPERIA SKILL</div><div class="tg">COURSE</div><div class="tt">'+esc(c.title)+'</div></div>'};
+const loadCourses=async()=>{try{const d=(await getDoc(doc(db,'config','course'))).data()||{};let c=d.courses||[];if(!c.length&&(d.lessons||[]).length)c=[{title:'Course',desc:'',thumb:'',lessons:d.lessons}];return c}catch(e){return null}};
+const getCS=async()=>(await loadCourses())||[];
+const saveCS=c=>setDoc(doc(db,'config','course'),{courses:c},{merge:true});
+const loadProf=async()=>(await getDoc(doc(db,'users',me.uid))).data();
+const isAdmin=()=>me&&me.email.toLowerCase()===ADMIN.toLowerCase();
+
+function nav(){
+ $('#nav').innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:12px">'+LOGO+(me?'':'<div class="nl"><a href="#courses">Courses</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#affiliate">Affiliate</a><a href="#faq">FAQ</a></div>')+'<div style="display:flex;gap:10px">'+(me?'<button class="btn gh" id="lo" style="padding:10px 20px;font-size:14px">Logout</button>':'<a class="btn gh" href="#login" style="padding:10px 20px;font-size:14px">Login</a><a class="btn am" href="#signup" style="padding:10px 20px;font-size:14px">Get Started</a>')+'</div></div>';
+ $('#ft').innerHTML=ftr();
+ if($('#lo'))$('#lo').onclick=async()=>{try{await signOut(auth)}catch(e){}tab='home';cur=null;location.hash='home';scrollTo(0,0)};
+}
+let firstLoad=true;
+onAuthStateChanged(auth,async u=>{if(busy)return;me=u;prof=null;if(u){try{prof=await loadProf()}catch(e){}}if(firstLoad){firstLoad=false;await new Promise(r=>setTimeout(r,Math.max(0,2400-performance.now())))}route()});
+addEventListener('hashchange',route);
+setTimeout(()=>{if($('.splash'))app.innerHTML='<div class="box">Load nahi hua. Internet check karke page dobara kholo.</div>'},15000);
+function route(){
+ document.body.classList.remove('ld');
+ nav();
+ const h=location.hash.slice(1)||'home';
+ if(!me&&['courses','path','features','how','pricing','affiliate','faq'].includes(h)){if(!$('#hero'))vHome();const el=document.getElementById(h);if(el)el.scrollIntoView({behavior:'smooth'});return}
+ if(!me)return({signup:vSignup,login:vLogin}[h]||vHome)();
+ if(isAdmin())return vAdmin();
+ return prof&&prof.status==='active'?vDash():vPay();
+}
+
+function ftr(){
+ const yr=new Date().getFullYear();
+ if(me)return '<div class="w" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px">'+LOGO+'<div style="font-size:13px">&copy; '+yr+' Imperia Skill. All rights reserved.</div></div>';
+ return '<div class="w"><div class="fg"><div style="max-width:340px">'+LOGO+'<p style="margin:16px 0 0">Premium video courses on TikTok automation, YouTube automation and the skills that are trending right now. Pay once, learn for life.</p></div><div><h4>Explore</h4><a href="#courses">Courses</a><a href="#path">Learning path</a><a href="#how">How it works</a><a href="#pricing">Pricing</a></div><div><h4>Earn</h4><a href="#affiliate">Affiliate program</a><a href="#faq">FAQ</a></div><div><h4>Account</h4><a href="#login">Log in</a><a href="#signup">Create account</a></div></div><div class="fb"><span>&copy; '+yr+' Imperia Skill. All rights reserved.</span><span>Educational content. Results depend on your effort and no income is guaranteed.</span></div></div>';
+}
+
+function vHome(){
+ const ic=n=>it(n);
+ const ck=t=>'<div class="ck">'+ico('check',20,'#10B981')+'<span>'+t+'</span></div>';
+ const crs=(i,t,d,pts)=>'<div class="cvc rv">'+thumb({title:t},i)+'<div class="cvb"><div class="chs"><span class="chip">Video course</span><span class="chip">Beginner friendly</span><span class="chip paid">Lifetime access</span></div><h3>'+t+'</h3><p class="mut">'+d+'</p><div class="wl2"><b>What you will learn</b>'+pts.map(ck).join('')+'</div><a class="btn full" href="#signup">Enroll now &mdash; Rs. 2,000</a></div></div>';
+ const mod=(n,t,pts,o)=>'<details class="fq mod"'+(o?' open':'')+'><summary><span class="mn">'+n+'</span>'+t+'</summary><div style="margin-top:12px">'+pts.map(ck).join('')+'</div></details>';
+ const fe=(i,t,d)=>'<div class="c fe rv">'+ic(i)+'<h3>'+t+'</h3><p class="mut">'+d+'</p></div>';
+ const stp=(n,t,d)=>'<div class="c stp rv"><div class="sn">'+n+'</div><h3>'+t+'</h3><p class="mut">'+d+'</p></div>';
+ const aud=(i,t,d)=>'<div class="c fe rv">'+ic(i)+'<h3>'+t+'</h3><p class="mut">'+d+'</p></div>';
+ const fq=(q,a)=>'<details class="fq"><summary>'+q+'</summary><p class="mut" style="margin:10px 0 0">'+a+'</p></details>';
+ set(`<section class="dk hero" id="hero"><div class="w hw">
+<div class="hl"><span class="pill"><i class="dot"></i>New &middot; Video courses with lifetime access</span>
+<h1>Learn the skills behind <em class="gt">TikTok &amp; YouTube</em> automation.</h1>
+<p class="hp">Imperia Skill gives you structured, step-by-step video lessons on building, automating and growing digital channels. Watch inside the platform in 480p, 720p or 1080p, on any device, whenever you like.</p>
+<div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px"><a class="btn am" href="#signup" style="font-size:17px;padding:16px 30px">Get started &mdash; Rs. 2,000</a><a class="btn gh" href="#courses" style="font-size:17px;padding:16px 30px">Explore courses</a></div>
+<div class="tr"><span>${ico('check',16,'#34D399')} One-time payment</span><span>${ico('check',16,'#34D399')} Lifetime access</span><span>${ico('check',16,'#34D399')} 50% affiliate commission</span></div></div>
+<div class="hv"><div class="fl2" style="top:-14px;right:6px"><span style="color:#10B981">&#9679;</span> 50% affiliate commission</div><div class="fl2" style="bottom:58px;left:-6px"><span style="color:#FFB020">&#9679;</span> 480p / 720p / 1080p</div><div class="mock">${thumb({title:'TikTok Automation'},0)}<div style="padding:14px 6px 4px"><div class="mr" style="border-top:0"><span class="mk on"></span>Channel setup and niche research</div><div class="mr"><span class="mk on"></span>Creating content with AI tools</div><div class="mr"><span class="mk"></span>Automation and scheduling</div><div class="mr"><span class="mk"></span>Growing your channel</div></div></div></div>
+</div></section>
+<section class="tbar"><div class="w g" style="padding:34px 20px;gap:26px">
+<div class="fe2">${ic('play')}<div><b>HD video lessons</b><span>Watch right inside the platform. Choose 480p, 720p or 1080p.</span></div></div>
+<div class="fe2">${ic('inf')}<div><b>Lifetime access</b><span>Pay once and keep every course, with no monthly fees.</span></div></div>
+<div class="fe2">${ic('phone')}<div><b>Learn on any device</b><span>Phone, tablet or laptop. Pick up exactly where you left off.</span></div></div>
+<div class="fe2">${ic('gift')}<div><b>Earn as an affiliate</b><span>Get 50% (Rs. 1,000) on every sale made through your link.</span></div></div>
+</div></section>
+<section class="sec" id="courses"><div class="w" style="padding:0"><div class="lbl">COURSES</div><h2>Pick the skill you want to master</h2><p class="mut" style="margin:-10px 0 34px;max-width:620px">Every course is a complete video program you can watch in order, at your own pace. One payment unlocks everything, now and as new courses are added.</p><div class="g cg3">
+${crs(0,'TikTok Automation','Build a faceless TikTok channel, create content with AI tools and automate your posting and growth, from your very first video.',['Channel setup and niche research','Creating content with AI tools','Scheduling and automation workflows','Analytics and growth habits'])}
+${crs(1,'YouTube Automation','Plan videos, write scripts, use AI voice and editing tools and run a repeatable upload system for your channel.',['Finding profitable video ideas','Scripting, voice and editing with AI','Thumbnails and titles that get clicks','Upload systems and channel growth'])}
+${crs(2,'Trending Topics','New trends, AI tools and fresh skills added to the platform over time, included in the same one-time payment.',['New AI tools and workflows','Trend breakdowns and updates','Practical, follow-along lessons','Added to your library as they launch'])}
+</div></div></section>
+<section class="wh sec" id="path"><div class="w pth" style="padding:0"><div class="pl1"><div class="lbl">LEARNING PATH</div><h2>A clear path from beginner to confident</h2><p class="mut">You never have to guess what to learn next. Lessons are numbered in order, with progress tracking, so you always know exactly where you are.</p><a class="btn" href="#signup">Start learning today</a></div><div class="pl2 rv">
+${mod(1,'Foundations',['How the whole system works','Choosing a niche that fits you','Setting up your accounts the right way'],true)}
+${mod(2,'Create',['Producing content with AI tools','Voice, visuals and editing basics','Building a repeatable content routine'])}
+${mod(3,'Automate',['Scheduling and posting on autopilot','Saving hours with simple workflows','Staying consistent without burnout'])}
+${mod(4,'Grow',['Reading your analytics','Improving what works','Scaling up and sharing your results'])}
+<p class="mut" style="font-size:12.5px;margin:10px 0 0">Outline shown as a guide. Exact lessons depend on the course you open.</p></div></div></section>
+<section class="sec" id="features"><div class="w" style="padding:0"><div class="lbl">THE PLATFORM</div><h2>Built for serious learners</h2><p class="mut" style="margin:-10px 0 34px;max-width:620px">A clean, fast learning space with everything you need and nothing you do not.</p><div class="g">
+${fe('play','Built-in video player','Lessons play right inside Imperia Skill. No downloads, no jumping between apps.')}
+${fe('bolt','Quality control','Start at 1080p, drop to 720p or 480p whenever your internet is slow. Slow connections are detected automatically.')}
+${fe('chart','Progress tracking','Mark lessons complete and watch your learning percentage grow on your dashboard.')}
+${fe('book','Organised parts','Every course is split into numbered parts. Open any course and see every lesson in one list.')}
+${fe('shield','Secure accounts','Your account is protected by Google Firebase security, and every payment is verified by a real person.')}
+${fe('users','Referral tracking','See every friend who joined with your link, their status and the commission you earned.')}
+</div></div></section>
+<section class="wh sec" id="how"><div class="w" style="padding:0"><div class="lbl">HOW IT WORKS</div><h2>From sign up to your first lesson in four steps</h2><div class="g" style="margin-top:28px">
+${stp(1,'Create your account','Sign up with your email and a password. It takes less than a minute.')}
+${stp(2,'Make the payment','Send Rs. 2,000 by Easypaisa or NayaPay. Payment details are shown after you sign up.')}
+${stp(3,'Submit your proof','Enter your Transaction ID. Our team verifies your payment manually.')}
+${stp(4,'Start learning','Your courses unlock after approval. Watch, track progress and share your affiliate link.')}
+</div></div></section>
+<section class="sec"><div class="w" style="padding:0"><div class="lbl">WHO IT IS FOR</div><h2>Made for people who want real skills</h2><div class="g" style="margin-top:28px">
+${aud('star','Complete beginners','No experience needed. Every lesson starts from the basics and builds step by step.')}
+${aud('pen','Content creators','Build a system for creating and publishing content more consistently and faster.')}
+${aud('chart','Side-hustle builders','Learn practical digital skills you can apply in your spare time.')}
+${aud('users','Students and freelancers','Add in-demand skills and share the platform with friends to earn commission.')}
+</div></div></section>
+<section class="wh sec" id="pricing"><div class="w prc" style="padding:0"><div class="pr1"><div class="lbl">PRICING</div><h2>One simple payment. Lifetime access.</h2><p class="mut">No subscriptions, no hidden fees and no upsells. Pay once and everything stays yours.</p><div style="margin-top:18px">${ck('Every current course, in full')}${ck('New courses and lessons as they are added')}${ck('480p, 720p and 1080p video quality')}${ck('Progress tracking on your dashboard')}${ck('Your own affiliate link with 50% commission')}${ck('Secure account with lifetime login')}</div></div>
+<div class="pc2 rv"><div class="lbl" style="color:#FFB020;margin-bottom:6px">IMPERIA SKILL MEMBERSHIP</div><div style="display:flex;align-items:baseline;gap:10px"><b style="font-size:clamp(44px,8vw,64px);letter-spacing:-2px">Rs. 2,000</b><span style="color:#AEB9D6">one-time</span></div><p style="color:#AEB9D6;margin:6px 0 22px">Lifetime access to the full course library.</p><a class="btn am full" href="#signup" style="font-size:17px;padding:16px">Get started now</a><div class="chs" style="margin-top:18px"><span class="chip dk2">Easypaisa</span><span class="chip dk2">NayaPay</span><span class="chip dk2">Verified by a real person</span></div></div></div></section>
+<section class="dk sec" id="affiliate"><div class="w afw" style="padding:0">
+<div style="flex:1 1 400px"><div class="lbl" style="color:#FFB020">AFFILIATE PROGRAM</div><h2 style="font-size:clamp(30px,5vw,46px);letter-spacing:-1.2px">Share it. Earn 50% on every sale.</h2><p style="color:#AEB9D6;margin:0 0 22px">Every student gets a personal referral link. When someone buys through your link and the payment is approved, Rs. 1,000 goes straight to your balance. Withdraw from Rs. 1,500 to Easypaisa or NayaPay.</p>
+<div class="avr"><div class="sn" style="background:rgba(255,255,255,.1)">1</div><div><b>Join and get your link</b><span>It is waiting on your dashboard the moment you are approved.</span></div></div><div class="avr"><div class="sn" style="background:rgba(255,255,255,.1)">2</div><div><b>Share it anywhere</b><span>WhatsApp, Facebook, TikTok bio, Telegram or with friends.</span></div></div><div class="avr"><div class="sn" style="background:rgba(255,255,255,.1)">3</div><div><b>See who joined and get paid</b><span>Track every referral live, then withdraw when you reach Rs. 1,500.</span></div></div><a class="btn am" href="#signup" style="margin-top:8px">Join and get your link</a></div>
+<div class="c calcp" style="flex:1 1 340px;color:var(--ink)"><h3>Earnings calculator</h3><p class="mut" style="margin:0;font-size:14px">Slide to see what referrals could add up to.</p><div class="calc"><div class="cn"><b id="hn">5</b> friends</div><input type="range" id="hc" min="1" max="50" value="5"><div class="ce" id="he">Rs. 5,000</div><div class="mut" style="font-size:13px">at Rs. 1,000 per approved sale</div></div><div class="row" style="margin-top:14px"><span>1 sale</span><b style="color:var(--p)">Rs. 1,000</b></div><div class="row"><span>5 sales</span><b style="color:var(--p)">Rs. 5,000</b></div><div class="row"><span>10 sales</span><b style="color:var(--p)">Rs. 10,000</b></div><p class="mut" style="font-size:12.5px;margin:10px 0 0">Illustration only. Commission is paid on approved sales and what you earn depends on your own sales.</p></div></div></section>
+<section class="sec"><div class="w" style="padding:0"><div class="lbl">TRUST AND SECURITY</div><h2>Your money and data are in safe hands</h2><div class="g" style="margin-top:28px">
+${fe('shield','Every payment verified','We check each Transaction ID by hand before unlocking anything, so every account is genuine.')}
+${fe('check','Secure sign in','Accounts run on Google Firebase, with strict database rules so nobody can see anyone else\'s data.')}
+${fe('inf','A promise of lifetime access','One payment. Your access does not expire and there are no recurring charges.')}
+</div></div></section>
+<section class="wh sec" id="faq"><div class="w" style="padding:0;max-width:820px"><div class="lbl">FAQ</div><h2>Frequently asked questions</h2>
+${fq('How much does it cost?','A single payment of Rs. 2,000 gives you lifetime access to every course on the platform.')}
+${fq('How do I pay?','After you sign up, the payment details are shown. Send the amount by Easypaisa or NayaPay and submit your Transaction ID.')}
+${fq('When does my course unlock?','As soon as we verify and approve your payment. We check payments manually to keep every account genuine.')}
+${fq('Can I choose the video quality?','Yes. Lessons start at 1080p and you can switch to 720p or 480p any time. On slow internet we pick 480p for you automatically.')}
+${fq('Can I watch on my phone?','Yes. The platform works on any phone, tablet or computer. Log in with the same email and password.')}
+${fq('How does the affiliate program work?','Every student gets a personal link. When someone joins through it and their payment is approved, Rs. 1,000 is added to your balance. You can see everyone who joined from your dashboard.')}
+${fq('What is the minimum withdrawal?','Rs. 1,500. Withdrawals are sent manually to your Easypaisa or NayaPay account.')}
+${fq('Is any income guaranteed?','No. Imperia Skill is an educational platform. Your results depend on your effort and consistency.')}
+</div></section>
+<section class="cta"><div class="w" style="padding:0;position:relative"><h2>Ready to start learning?</h2><p>Join Imperia Skill today and get lifetime access to every course.</p><a class="btn am" href="#signup" style="font-size:17px;padding:16px 34px">Get started &mdash; Rs. 2,000</a></div></section>`);
+ document.body.classList.add('rvon');
+ if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});document.querySelectorAll('.rv').forEach(n=>io.observe(n))}else document.querySelectorAll('.rv').forEach(n=>n.classList.add('in'));
+ $('#hc').oninput=e=>{const n=+e.target.value;$('#hn').textContent=n;$('#he').textContent=rup(n*COMM)};
+}
+
+function authPage(h,p,form,left){
+ const dflt=[['play','HD video lessons','Watch inside the platform in 480p, 720p or 1080p.'],['inf','Lifetime access','Pay once. No monthly fees, ever.'],['gift','Earn 50% as an affiliate','Rs. 1,000 for every friend you refer.'],['shield','Secure and verified','Every payment is checked by a real person.']];
+ set('<div class="au"><div class="al"><div class="lbl" style="color:#FFB020">IMPERIA SKILL</div><h1>'+h+'</h1><p>'+p+'</p><div class="av">'+(left||dflt.map(x=>'<div class="avr">'+it(x[0])+'<div><b>'+x[1]+'</b><span>'+x[2]+'</span></div></div>').join(''))+'</div></div><div class="ar"><div class="fc">'+form+'</div></div></div>');
+ document.querySelectorAll('[data-eye]').forEach(b=>b.onclick=()=>{const i=$('#'+b.dataset.eye),hd=i.type==='password';i.type=hd?'text':'password';b.textContent=hd?'Hide':'Show'});
+ document.querySelectorAll('.fc input').forEach(i=>i.addEventListener('keydown',e=>{if(e.key==='Enter'&&$('#go'))$('#go').click()}));
+}
+const pw=(id,ph,ac)=>'<div class="pw"><input id="'+id+'" type="password" autocomplete="'+ac+'" placeholder="'+ph+'"><button type="button" class="eye" data-eye="'+id+'">Show</button></div>';
+const pills=n=>'<div class="st"><span class="'+(n===1?'on':'')+'">1. Account</span><span class="'+(n===2?'on':'')+'">2. Payment</span><span class="'+(n===3?'on':'')+'">3. Verify</span></div>';
+
+function vLogin(){
+ authPage('Welcome back.','Log in to continue your learning, track your progress and check your affiliate earnings.',
+ '<h2 style="font-size:28px;margin:0 0 4px;letter-spacing:-.8px">Log in</h2><p class="mut" style="margin:0 0 8px">Enter your email and password to access your dashboard.</p><label for="e">Email</label><input id="e" type="email" autocomplete="email" placeholder="you@example.com"><label for="p">Password</label>'+pw('p','Your password','current-password')+'<div style="text-align:right;margin-top:8px"><a href="#" id="fp" style="color:var(--p);font-weight:700;font-size:13px">Forgot password?</a></div><div class="err" id="er"></div><button class="btn full" id="go">Log in</button><p class="mut" style="text-align:center;font-size:14px;margin:18px 0 0">New here? <a href="#signup" style="color:var(--p);font-weight:700">Create an account</a></p>');
+ $('#fp').onclick=async ev=>{ev.preventDefault();const e=$('#e').value.trim(),er=$('#er');er.style.color='';if(!e)return er.textContent='Enter your email above first, then press Forgot password.';try{await sendPasswordResetEmail(auth,e);er.style.color='#067647';er.textContent='Reset link sent. Check your inbox and spam folder.'}catch(x){er.textContent=msg(x)}};
+ $('#go').onclick=async()=>{
+  const e=$('#e').value.trim(),p=$('#p').value;$('#er').style.color='';$('#er').textContent='';
+  if(!e||!p)return $('#er').textContent='Please enter your email and password.';
+  $('#go').disabled=true;
+  try{await signInWithEmailAndPassword(auth,e,p)}catch(x){$('#go').disabled=false;$('#er').textContent=msg(x)}
+ };
+}
+
+function vSignup(){
+ const rf=new URLSearchParams(location.search).get('ref')||'';
+ authPage('Learn. Automate. Grow.','Create your account, pay once and get lifetime access to every course. It takes less than a minute.',
+ pills(1)+'<h2 style="font-size:28px;margin:0 0 4px;letter-spacing:-.8px">Create your account</h2><p class="mut" style="margin:0 0 8px">Start with your email and a password. Your payment details come next.</p>'+(rf?'<div class="note" style="margin:10px 0 0">You were invited with referral code <b>'+esc(rf.toUpperCase())+'</b>.</div>':'')+'<label for="e">Email</label><input id="e" type="email" autocomplete="email" placeholder="you@example.com"><label for="p">Password</label>'+pw('p','At least 6 characters','new-password')+'<label for="r">Referral code (optional)</label><input id="r" placeholder="If a friend gave you one" value="'+esc(rf)+'"><div class="err" id="er"></div><button class="btn full" id="go">Continue</button><p class="mut" style="text-align:center;font-size:14px;margin:18px 0 0">Already have an account? <a href="#login" style="color:var(--p);font-weight:700">Log in</a></p>');
+ $('#go').onclick=async()=>{
+  const e=$('#e').value.trim(),p=$('#p').value,r=$('#r').value.trim().toUpperCase(),er=$('#er');er.textContent='';
+  if(!e||p.length<6)return er.textContent='Enter your email and a password of at least 6 characters.';
+  $('#go').disabled=true;busy=true;
+  try{
+   const {user}=await createUserWithEmailAndPassword(auth,e,p);me=user;
+   let by=null;if(r){try{const s=await getDoc(doc(db,'refCodes',r));if(s.exists()&&s.data().uid!==user.uid)by=s.data().uid}catch(_){}}
+   const code=Math.random().toString(36).slice(2,8).toUpperCase();
+   await setDoc(doc(db,'users',user.uid),{email:e,refCode:code,referredBy:by,status:'pending',balance:0,createdAt:serverTimestamp()});
+   await setDoc(doc(db,'refCodes',code),{uid:user.uid});
+   if(by){try{await setDoc(doc(db,'referrals',user.uid),{referrerUid:by,name:dname(e),status:'pending',commission:0,createdAt:serverTimestamp()})}catch(_){}}
+   prof=await loadProf();busy=false;location.hash='payment';route();
+  }catch(x){busy=false;$('#go').disabled=false;er.textContent=msg(x)}
+ };
+}
+
+async function vPay(){
+ set('<div class="box"><div class="sp"></div></div>');
+ const [pd,ps]=await Promise.all([getDoc(doc(db,'config','payment')),getDoc(doc(db,'payments',me.uid))]);
+ const d=pd.data()||{},p=ps.exists()?ps.data():null,sub=p&&p.status==='submitted';
+ const steps=[['Open Easypaisa or NayaPay','Use the app on your phone.'],['Send Rs. 2,000','To the account shown on this page.'],['Copy the Transaction ID','You will find it on your payment receipt.'],['Submit it here','We verify it and unlock your courses.']];
+ const left=steps.map((x,i)=>'<div class="avr"><div class="sn" style="background:rgba(255,255,255,.1)">'+(i+1)+'</div><div><b>'+x[0]+'</b><span>'+x[1]+'</span></div></div>').join('');
+ if(sub){
+  authPage('Almost there.','Your payment proof has been received and is waiting for review.',
+  pills(3)+'<div style="width:56px;height:56px;border-radius:50%;background:#E0EDFF;display:flex;align-items:center;justify-content:center;margin-bottom:16px">'+ico('clock',28,'#2F6BFF')+'</div><h2 style="font-size:28px;margin:0 0 6px;letter-spacing:-.8px">Payment under review</h2><p class="mut" style="margin:0 0 20px">We are verifying your Transaction ID by hand. Your courses unlock the moment it is approved. You can close this page and come back later.</p><div class="note" style="margin-bottom:18px">Transaction ID submitted: <b>'+esc(p.txnId)+'</b></div><button class="btn full" id="rf">Check status</button>',
+  [['check','Proof received','Your Transaction ID is with our team.'],['clock','Manual verification','Every payment is checked by a real person.'],['play','Then you are in','Courses and your affiliate link unlock instantly.']].map(x=>'<div class="avr">'+it(x[0])+'<div><b>'+x[1]+'</b><span>'+x[2]+'</span></div></div>').join(''));
+  $('#rf').onclick=async()=>{$('#rf').disabled=true;prof=await loadProf();route()};return;
+ }
+ const row=(l,v)=>'<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.12)"><span style="color:#AEB9D6;font-size:14px">'+l+'</span>'+v+'</div>';
+ authPage('Almost there.','Send the payment, then submit your Transaction ID. We unlock your courses after verification.',
+ pills(2)+'<h2 style="font-size:28px;margin:0 0 4px;letter-spacing:-.8px">Complete your payment</h2>'+(p&&p.status==='rejected'?'<div class="err">Your last payment could not be verified. Please submit the correct details.</div>':'<p class="mut" style="margin:0">Send Rs. 2,000 to the account below.</p>')
+ +'<div class="wb" style="display:block;padding:20px;border-radius:18px;margin:18px 0"><div style="color:#8DB0FF;font-size:12px;font-weight:700;letter-spacing:2px;margin-bottom:8px">EASYPAISA / NAYAPAY</div>'
+ +row('Account name','<b style="color:#fff">'+esc(d.name||'-')+'</b>')
+ +row('Number','<span style="display:flex;align-items:center;gap:10px"><b style="color:#fff;font-size:20px">'+esc(d.number||'-')+'</b><button class="btn gh" id="cn" style="padding:6px 12px;font-size:12px">Copy</button></span>')
+ +row('Amount','<b style="color:#FFB020;font-size:20px">Rs. 2,000</b>')+'</div>'
+ +'<b>After you pay</b><label for="t">Transaction ID</label><input id="t" placeholder="From your payment receipt"><label for="s">Your Easypaisa / NayaPay number</label><input id="s" inputmode="numeric" placeholder="03XXXXXXXXX"><div class="err" id="er"></div><button class="btn full" id="go">Submit for approval</button><p class="hint" style="text-align:center;margin-top:12px">We review every payment manually. Your account stays safe and private.</p>',left);
+ $('#cn').onclick=e=>cpy(d.number||'',e.target);
+ $('#go').onclick=async()=>{
+  const t=$('#t').value.trim(),s=$('#s').value.trim();
+  if(t.length<4||!/^03\d{9}$/.test(s))return $('#er').textContent='Enter your Transaction ID and a valid number (03XXXXXXXXX).';
+  $('#go').disabled=true;
+  try{await setDoc(doc(db,'payments',me.uid),{uid:me.uid,txnId:t,senderNumber:s,status:'submitted',createdAt:serverTimestamp()});vPay()}
+  catch(x){$('#go').disabled=false;$('#er').textContent=msg(x)}
+ };
+}
+
+/* ===== STUDENT DASHBOARD ===== */
+const I={play:'<polygon points="6 4 20 12 6 20"/>',book:'<path d="M4 4h12a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"/><path d="M4 17a3 3 0 0 1 3-3h12"/>',check:'<path d="M5 12l5 5 9-10"/>',inf:'<path d="M7 8a4 4 0 1 0 0 8c3 0 7-8 10-8a4 4 0 1 1 0 8c-3 0-7-8-10-8z"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14a6.5 6.5 0 0 1 3.5 6"/>',wallet:'<rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18"/><circle cx="16.5" cy="15" r="1.2"/>',phone:'<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/>',chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',gift:'<rect x="3" y="9" width="18" height="12" rx="2"/><path d="M12 9v12M3 13h18M12 9c-3 0-5-1-5-3s3-3 5 0c2-3 5-2 5 0s-2 3-5 3"/>',help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17h.01"/>',link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3A4 4 0 0 0 11 18.7l1-1"/>',star:'<path d="M12 3l2.7 5.8 6.3.8-4.6 4.4 1.2 6.2L12 17l-5.6 3.2 1.2-6.2L3 9.6l6.3-.8z"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',share:'<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/>',home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',pen:'<path d="M4 20l4-1 11-11-3-3L5 16z"/>'};
+const ico=(n,s=22,c='currentColor')=>'<svg width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill="none" stroke="'+c+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+I[n]+'</svg>';
+const it=(n,x='')=>'<div class="it '+x+'">'+ico(n)+'</div>';
+const sh=(t,s)=>'<div class="sh"><h3>'+t+'</h3>'+(s?'<p>'+s+'</p>':'')+'</div>';
+const rup=n=>'Rs. '+Number(n||0).toLocaleString('en-US');
+const flg=k=>{try{return localStorage.getItem('imp_'+k+'_'+me.uid)==='1'}catch(e){return false}};
+const setflg=k=>{try{localStorage.setItem('imp_'+k+'_'+me.uid,'1')}catch(e){}};
+const getDone=()=>{try{return JSON.parse(localStorage.getItem('imp_done_'+me.uid)||'{}')}catch(e){return{}}};
+const setDone=(k,v)=>{try{const d=getDone();v?d[k]=1:delete d[k];localStorage.setItem('imp_done_'+me.uid,JSON.stringify(d))}catch(e){}};
+const lk=(c,l)=>c.title+'|'+l.title;
+const playable=c=>(c.lessons||[]).filter(l=>l.title&&embed(l.url));
+const prog=c=>{const L=playable(c),d=getDone(),n=L.filter(l=>d[lk(c,l)]).length;return{n,t:L.length,p:L.length?Math.round(n*100/L.length):0}};
+const bar=p=>'<div class="pgb"><i style="width:'+p+'%"></i></div>';
+const refLink=()=>location.origin+location.pathname+'?ref='+prof.refCode+'#signup';
+const cpy=async(t,b,l)=>{const o=b.textContent;try{await navigator.clipboard.writeText(t)}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(x){}a.remove()}b.textContent=l||'Copied!';setTimeout(()=>{b.textContent=o},1700)};
+const dname=e=>{let n=String(e||'').split('@')[0].replace(/[0-9_.\-+]+/g,' ').trim().split(/\s+/).filter(Boolean).map(w=>w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()).join(' ');return n||'Student'};
+let WD=[],RF=[],CSerr=false;
+const loadRefs=async()=>{try{const q=await getDocs(query(collection(db,'referrals'),where('referrerUid','==',me.uid)));RF=q.docs.map(d=>d.data()).sort((x,y)=>(y.createdAt?.seconds||0)-(x.createdAt?.seconds||0))}catch(e){RF=[]}return RF};
+const QL=[['1080p','url'],['720p','u720'],['480p','u480']];
+const lessonQ=l=>QL.map(q=>[q[0],l[q[1]]]).filter(q=>q[1]&&embed(q[1]));
+const slowNet=()=>{try{const c=navigator.connection||{};return !!c.saveData||['slow-2g','2g','3g'].includes(c.effectiveType)||(c.downlink&&c.downlink<1.5)}catch(e){return false}};
+let qpref=null;
+const loadW=async()=>{try{const q=await getDocs(query(collection(db,'withdrawals'),where('uid','==',me.uid)));WD=q.docs.map(d=>d.data()).sort((x,y)=>(y.createdAt?.seconds||0)-(x.createdAt?.seconds||0))}catch(e){WD=[]}return WD};
+const wsum=s=>WD.filter(w=>w.status===s).reduce((a,w)=>a+(+w.amount||0),0);
+const earned=()=>(+prof.balance||0)+wsum('paid');
+const avail=()=>Math.max(0,(+prof.balance||0)-wsum('pending'));
+
+async function vDash(){
+ prof=await loadProf();
+ const hr=new Date().getHours(),gr=hr<12?'Good morning':hr<18?'Good afternoon':'Good evening',nm=dname(prof.email),since=prof.createdAt?.seconds?new Date(prof.createdAt.seconds*1000).toLocaleDateString('en-US',{month:'long',year:'numeric'}):'';
+ const T=[['home','Overview'],['courses','My Courses'],['aff','Affiliate'],['help','Help']];
+ set('<div class="w sec" style="padding-top:28px"><div class="wb"><div class="wl"><div class="avt">'+esc(nm.charAt(0).toUpperCase())+'</div><div><div class="mb"><span class="dot"></span>ACTIVE MEMBER &middot; LIFETIME ACCESS</div><h2>'+gr+', '+esc(nm.split(' ')[0])+'</h2><div class="sub">'+(since?'Member since '+since+' &middot; ':'')+'Your learning and earning hub</div></div></div><div class="stg"><button class="btn am" id="hc" style="padding:13px 22px;font-size:15px">Continue learning</button></div></div><div class="tabs tb2">'+T.map(t=>'<button data-t="'+t[0]+'" class="'+(tab===t[0]?'on':'')+'">'+t[1]+'</button>').join('')+'</div><div id="tb"><div class="sp"></div></div></div>');
+ $('.tabs').onclick=e=>{const b=e.target.closest('[data-t]');if(b)goTab(b.dataset.t)};
+ const c=await loadCourses();CSerr=c===null;CS=c||[];await Promise.all([loadW(),loadRefs()]);
+ $('#hc').onclick=()=>{const P=CS.map(prog);let ci=CS.findIndex((x,i)=>P[i].t&&P[i].n<P[i].t);if(ci<0)ci=CS.findIndex((x,i)=>P[i].t);ci>=0?openCourse(ci,nextLesson(CS[ci])):goTab('courses')};
+ renderTab();
+}
+function updStats(){}
+function goTab(t){tab=t;cur=null;document.querySelectorAll('.tabs [data-t]').forEach(b=>b.classList.toggle('on',b.dataset.t===t));renderTab();scrollTo({top:0,behavior:'smooth'})}
+function renderTab(){updStats();({home:tHome,courses:tCourses,aff:tAff,help:tHelp}[tab]||tHome)()}
+function openCourse(i,l){tab='courses';document.querySelectorAll('.tabs [data-t]').forEach(b=>b.classList.toggle('on',b.dataset.t==='courses'));cur=i;ln=l||0;tPlay();scrollTo({top:0,behavior:'smooth'})}
+const nextLesson=c=>{const L=playable(c),d=getDone(),i=L.findIndex(l=>!d[lk(c,l)]);return i<0?0:i};
+
+function emptyCourses(){
+ return '<div class="c emp">'+it('book','big')+'<h3>Your course library is being prepared</h3><p class="mut">Your membership is active and your lifetime access is saved. New video courses appear here the moment they are published, so you do not need to do anything.</p><div class="g" style="margin:22px 0 6px;text-align:left"><div class="mini">'+ico('book',20)+'<div><b>1. Courses unlock here</b><span>Every lesson plays right inside Imperia Skill.</span></div></div><div class="mini">'+ico('check',20)+'<div><b>2. Track your progress</b><span>Mark lessons complete and see your percentage grow.</span></div></div><div class="mini">'+ico('wallet',20)+'<div><b>3. Earn while you wait</b><span>Share your link and earn Rs. '+COMM+' on every approved sale.</span></div></div></div><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px"><button class="btn" data-go="aff">Open Affiliate Hub</button><button class="btn o" data-go="help">Visit Help Center</button></div></div>';
+}
+
+function tHome(){
+ const tb=$('#tb'),P=CS.map(prog),tl=P.reduce((a,x)=>a+x.t,0),dn=P.reduce((a,x)=>a+x.n,0),pc=tl?Math.round(dn*100/tl):0;
+ let ci=CS.findIndex((c,i)=>P[i].t&&P[i].n<P[i].t);if(ci<0)ci=CS.findIndex((c,i)=>P[i].t);
+ const hero=ci>=0?'<div class="cont"><div class="cth">'+thumb(CS[ci],ci)+'</div><div class="cbd"><div class="lbl" style="color:#8DB0FF">'+(P[ci].n?'CONTINUE LEARNING':'START YOUR FIRST COURSE')+'</div><h2>'+esc(CS[ci].title)+'</h2><p>'+esc(CS[ci].desc||'Step-by-step video lessons you can watch anytime, on any device.')+'</p>'+bar(P[ci].p)+'<div class="pgt"><span>'+P[ci].n+' of '+P[ci].t+' lessons completed</span><b>'+P[ci].p+'%</b></div><button class="btn am" data-open="'+ci+'">'+(P[ci].n?'Resume course':'Start learning')+'</button></div></div>':(CSerr?'<div class="c">Could not load your courses. Please reload the page.</div>':emptyCourses());
+ const chk=[['Activate your account','Payment verified. Lifetime access is on.',true,null],['Watch your first lesson','Open any course and press play.',dn>0,'courses'],['Finish a full course','Mark every lesson complete.',P.some(x=>x.t&&x.n===x.t),'courses'],['Share your referral link','Copy it once and send it to a friend.',flg('shared'),'aff'],['Request your first withdrawal','Unlocks after '+Math.ceil(MIN/COMM)+' approved sales.',WD.length>0,'aff']];
+ const cd=chk.filter(x=>x[2]).length;
+ const roads=[['Week 1','Foundation','Watch the starter lessons, set up your accounts and learn how the whole system works.'],['Week 2','Build','Follow along step by step and create your first project using the lessons.'],['Week 3','Publish','Post consistently, review what works and improve your process every day.'],['Week 4','Grow','Refine your workflow, share what you learned and start your affiliate journey.']];
+ const perks=[['inf','Lifetime access','Pay once. Your courses stay yours with no monthly fees.'],['phone','Watch anywhere','Lessons play inside the site on mobile, tablet and desktop.'],['chart','Progress tracking','Mark lessons done and see your learning percentage grow.'],['gift','Affiliate income','Earn '+rup(COMM)+' (50%) on every sale you refer.'],['shield','Secure account','Your data is protected with Google Firebase security.'],['star','New lessons','Fresh lessons and courses appear here as they are added.']];
+ const tips=[['clock','Study 30 minutes a day','Small daily sessions beat one long weekend binge.'],['pen','Take notes','Write down every step so you can repeat it without the video.'],['bolt','Apply immediately','Pause the video and try each step on your own account.'],['users','Learn with a friend','Refer a friend. You learn together and you earn together.']];
+ tb.innerHTML=hero
+ +'<div class="g dg" style="margin-top:20px"><div class="c"><div class="rw"><div class="ring" style="--v:'+(pc*3.6)+'deg"><div><b>'+pc+'%</b><span>overall</span></div></div><div><h3 style="margin:0 0 4px">Your progress</h3><p class="mut" style="margin:0;font-size:14px">'+(tl?dn+' of '+tl+' lessons completed across '+CS.length+' course'+(CS.length===1?'':'s')+'.':'Your progress starts the moment your first lesson is published.')+'</p></div></div></div><div class="c"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h3 style="margin:0">Getting started</h3><span class="chip paid">'+cd+' / '+chk.length+' done</span></div>'+bar(Math.round(cd*100/chk.length))+'<div style="margin-top:8px">'+chk.map(x=>'<div class="cl'+(x[2]?' ok':'')+'"><span class="cm">'+(x[2]?ico('check',14,'#fff'):'')+'</span><div><b>'+x[0]+'</b><span>'+x[1]+'</span></div>'+(!x[2]&&x[3]?'<button class="mb2" data-go="'+x[3]+'">Go</button>':'')+'</div>').join('')+'</div></div></div>'
+ +'<div class="promo"><div><div class="lbl" style="color:#FFB020">AFFILIATE PROGRAM</div><h2>Earn '+rup(COMM)+' for every friend you refer</h2><p>Share your personal link. When someone buys through it and your payment is approved, 50% of the course price goes straight to your balance. Withdraw from '+rup(MIN)+'.</p></div><div class="pbtn"><button class="btn am" id="pcp">Copy my link</button><button class="btn gh" data-go="aff">Open Affiliate Hub</button></div></div>'
+ +'<div style="margin-top:36px">'+sh('Your 4-week study plan','A simple path to get real value from your membership.')+'<div class="g">'+roads.map((r,i)=>'<div class="c rd"><span class="rn">'+(i+1)+'</span><div class="lbl" style="margin:0 0 4px">'+r[0].toUpperCase()+'</div><h3>'+r[1]+'</h3><p class="mut" style="margin:0;font-size:14px">'+r[2]+'</p></div>').join('')+'</div></div>'
+ +'<div style="margin-top:36px">'+sh('Everything in your membership','One payment. All of this is included.')+'<div class="g pkg">'+perks.map(p=>'<div class="c pk">'+it(p[0])+'<div><h3 style="font-size:16px;margin:0 0 4px">'+p[1]+'</h3><p class="mut" style="margin:0;font-size:14px">'+p[2]+'</p></div></div>').join('')+'</div></div>'
+ +'<div style="margin-top:36px">'+sh('Habits of successful students')+'<div class="g">'+tips.map(p=>'<div class="mini">'+ico(p[0],20)+'<div><b>'+p[1]+'</b><span>'+p[2]+'</span></div></div>').join('')+'</div></div>'
+ +'<p class="mut" style="font-size:12px;margin:28px 0 0;text-align:center">Imperia Skill is an educational platform. Results depend on your effort and consistency, and no income is guaranteed.</p>';
+ tb.onclick=e=>{const o=e.target.closest('[data-open]'),g=e.target.closest('[data-go]');if(o){const i=+o.dataset.open;openCourse(i,nextLesson(CS[i]))}else if(g)goTab(g.dataset.go);else if(e.target.id==='pcp'){setflg('shared');cpy(refLink(),e.target)}};
+}
+
+async function tCourses(){
+ const tb=$('#tb');
+ if(CSerr)return tb.innerHTML='<div class="c">Could not load courses. Please reload the page.</div>';
+ if(!CS.length){tb.innerHTML=emptyCourses();tb.onclick=e=>{const g=e.target.closest('[data-go]');if(g)goTab(g.dataset.go)};return}
+ if(cur!==null&&CS[cur])return tPlay();
+ const P=CS.map(prog);
+ tb.innerHTML=sh('My Library',CS.length+' course'+(CS.length===1?'':'s')+' unlocked with lifetime access')+(CS.length>3?'<input id="qs" placeholder="Search your courses..." style="margin-bottom:18px">':'')
+ +'<div class="g" id="cg">'+CS.map((c,i)=>'<div class="cc" data-c="'+i+'" data-n="'+esc((c.title||'').toLowerCase())+'">'+thumb(c,i)+'<div style="padding:14px 6px 6px"><div class="chs"><span class="chip">'+P[i].t+' lessons</span><span class="chip">Beginner friendly</span><span class="chip paid">Lifetime access</span></div><h3 style="font-size:19px">'+esc(c.title)+'</h3><p class="mut" style="margin:0 0 12px;font-size:14px">'+esc(c.desc||'Step-by-step video lessons.')+'</p>'+bar(P[i].p)+'<div class="pgt"><span>'+(P[i].p===100?'Completed':P[i].n+' of '+P[i].t+' done')+'</span><b>'+P[i].p+'%</b></div><span class="btn full" style="padding:12px;font-size:14px;margin-top:12px">'+(P[i].p===100?'Watch again':P[i].n?'Continue':'Start Learning')+'</span></div></div>').join('')+'</div><p class="mut" style="text-align:center;font-size:14px;margin-top:28px">New courses show up here as soon as they are published. Keep an eye on this page.</p>';
+ tb.onclick=e=>{const b=e.target.closest('[data-c]');if(b){const i=+b.dataset.c;openCourse(i,nextLesson(CS[i]))}};
+ if($('#qs'))$('#qs').oninput=e=>{const v=e.target.value.toLowerCase().trim();document.querySelectorAll('#cg .cc').forEach(x=>x.style.display=x.dataset.n.includes(v)?'':'none')};
+}
+
+function tPlay(){
+ const c=CS[cur],L=playable(c),d=getDone();if(ln>=L.length)ln=0;
+ const tb=$('#tb'),P=prog(c);tb.onclick=null;
+ if(!L.length){tb.innerHTML='<button class="btn o" id="bk" style="padding:10px 18px">&larr; All courses</button><div class="c" style="margin-top:16px">Lessons for this course are coming soon.</div>';$('#bk').onclick=()=>{cur=null;tCourses()};return}
+ const l=L[ln],Q=lessonQ(l),done=!!d[lk(c,l)],auto=slowNet();
+ let qi=0;
+ if(Q.length>1){const order=['1080p','720p','480p'],want=qpref||(auto?'480p':'1080p'),wi=order.indexOf(want);qi=Q.findIndex(x=>x[0]===want);if(qi<0){qi=Q.findIndex(x=>order.indexOf(x[0])>=wi);if(qi<0)qi=Q.length-1}}
+ const src=embed(Q.length?Q[qi][1]:l.url);
+ const qb=Q.length>1?'<div class="qb"><span class="ql">'+ico('bolt',14)+' Quality</span>'+Q.map((x,i)=>'<button data-q="'+x[0]+'" class="'+(i===qi?'on':'')+'">'+x[0]+'</button>').join('')+'<span class="qa">'+(qpref?'Your choice':auto?'Slow internet detected: 480p selected':'Default: best quality')+'</span></div>':'<div class="qb"><span class="ql">'+ico('bolt',14)+' Quality</span><span class="qa" style="margin-left:0">Auto. Use the gear icon inside the player to pick 480p, 720p or 1080p.</span></div>';
+ tb.innerHTML='<button class="btn o" id="bk" style="padding:10px 18px">&larr; All courses</button><div style="margin:16px 0 18px"><h2 style="margin:0 0 4px;font-size:clamp(24px,4vw,32px);letter-spacing:-.5px">'+esc(c.title)+'</h2><p class="mut" style="margin:0">'+esc(c.desc||'')+'</p></div>'
+ +(P.p===100?'<div class="promo" style="margin:0 0 18px;padding:20px 24px"><div><h2 style="font-size:22px">Course completed. Well done!</h2><p style="margin:0">You finished every lesson. Now help a friend learn and earn '+rup(COMM)+' per sale.</p></div><div class="pbtn"><button class="btn am" data-go="aff">Open Affiliate Hub</button></div></div>':'')
+ +'<div class="th2"><div style="flex:2 1 460px;min-width:0"><div class="vp"><iframe id="fr" src="'+src+'" allow="autoplay;fullscreen" allowfullscreen></iframe></div>'+qb+'<div style="padding:16px 4px 4px;color:#fff"><div style="color:#8DB0FF;font-size:12px;font-weight:700;letter-spacing:2px">PART '+(ln+1)+' OF '+L.length+(done?' &middot; COMPLETED':'')+'</div><h3 style="margin:6px 0 0;font-size:20px">'+esc(l.title)+'</h3></div><div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap"><button class="btn gh" id="pv" style="padding:11px 20px;font-size:14px;'+(ln===0?'display:none':'')+'">&larr; Previous</button><button class="btn '+(done?'gh':'')+'" id="dn" style="padding:11px 20px;font-size:14px">'+(done?'Completed &#10003; (undo)':'Mark as complete')+'</button><button class="btn am" id="nx" style="padding:11px 20px;font-size:14px;'+(ln===L.length-1?'display:none':'')+'">Next part &rarr;</button></div><p style="color:#8E9BC4;font-size:13px;margin:14px 4px 0">Video not loading? Refresh the page or switch the quality. Your progress is saved on this device.</p></div><div class="pl" id="pls"><div class="hd">All parts &middot; '+L.length+' lessons</div><div style="padding:0 10px 10px">'+bar(P.p)+'<div class="pgt" style="color:#AEB9D6"><span>'+P.n+' of '+P.t+' completed</span><b style="color:#fff">'+P.p+'%</b></div></div>'+L.map((x,i)=>'<button class="ls'+(i===ln?' on':'')+(d[lk(c,x)]?' dn':'')+'" data-l="'+i+'"><span class="n">'+(d[lk(c,x)]?ico('check',14,'#fff'):(i+1))+'</span><span>'+esc(x.title)+'</span></button>').join('')+'</div></div>';
+ $('#bk').onclick=()=>{cur=null;tCourses()};
+ const go=i=>{ln=i;tPlay();$('#fr').scrollIntoView({behavior:'smooth',block:'center'})};
+ $('#pls').onclick=e=>{const b=e.target.closest('[data-l]');if(b)go(+b.dataset.l)};
+ $('#pv').onclick=()=>go(ln-1);$('#nx').onclick=()=>go(ln+1);
+ $('#dn').onclick=()=>{setDone(lk(c,l),!done);tPlay()};
+ tb.onclick=e=>{const g=e.target.closest('[data-go]'),q=e.target.closest('[data-q]');if(g)goTab(g.dataset.go);else if(q){qpref=q.dataset.q;tPlay()}};
+}
+
+function tAff(){
+ const link=refLink(),code=prof.refCode,av=avail(),pend=wsum('pending'),paid=wsum('paid'),tot=earned(),apr=RF.filter(r=>r.status==='approved').length,sales=RF.length?apr:Math.round(tot/COMM),pct=Math.min(100,Math.round(av*100/MIN));
+ const enc=encodeURIComponent,txt='Learn TikTok and YouTube automation with Imperia Skill: ';
+ const caps=[['Friendly invite','Want to learn TikTok and YouTube automation step by step? I am learning on Imperia Skill. Video lessons you can watch anytime, one-time fee of only Rs. 2,000. Join here: '+link],['Short and simple','Imperia Skill: Rs. 2,000 one time, lifetime access to video courses. Check it out: '+link],['Skill-focused','Stop scrolling, start learning. Imperia Skill teaches TikTok automation, YouTube automation and more, with lifetime access and no monthly fees. '+link]];
+ const how=[['link','Share your link','Send your personal link to friends, family and followers.'],['users','They sign up and pay','They create an account and pay the one-time course fee.'],['check','We approve the payment','Our team verifies their payment manually.'],['wallet','You earn '+rup(COMM),'Your balance grows by 50% of the sale. Withdraw from '+rup(MIN)+'.']];
+ const faq=[['How will I know someone joined with my link?','Every person who signs up with your link appears in the "People you referred" list on this page. It shows Waiting while their payment is under review and Approved once you have earned your commission.'],['When do I get paid for a referral?','Your commission is added to your balance after we approve your friend\'s payment. It is never added before approval.'],['What is the minimum withdrawal?','The minimum withdrawal is '+rup(MIN)+'. With '+rup(COMM)+' per sale, you reach it after 2 approved sales.'],['How are withdrawals sent?','Withdrawals are sent manually to your Easypaisa or NayaPay account. Your request shows Pending until we mark it Paid.'],['Is there a limit on how much I can earn?','No. There is no cap on the number of friends you can refer.'],['What is not allowed?','Referring yourself, fake accounts, spam, or promising guaranteed income is not allowed and can lead to your commission being cancelled.']];
+ const tiers=[[1,'Your first sale'],[2,'Withdrawal unlocked'],[5,'Growing steadily'],[10,'Strong referrer'],[25,'Top affiliate']];
+ const tb=$('#tb');
+ const refRow=r=>'<div class="row"><span><b>'+esc(r.name||'Student')+'</b><br><span class="mut" style="font-size:13px">Joined '+(r.createdAt?.seconds?new Date(r.createdAt.seconds*1000).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}):'recently')+'</span></span><span style="text-align:right">'+(r.status==='approved'?'<span class="chip paid">Approved</span><br><b style="color:#067647;font-size:13px">+'+rup(r.commission||0)+'</b>':'<span class="chip pending">Waiting</span><br><span class="mut" style="font-size:12px">Payment under review</span>')+'</span></div>';
+ tb.innerHTML='<div class="wb" style="display:block"><div class="mb"><span class="dot"></span>AFFILIATE HUB</div><div style="color:#AEB9D6;font-size:14px;margin-top:10px">Available to withdraw</div><div class="big">'+rup(av)+'</div><div style="margin:14px 0 6px;max-width:460px">'+bar(pct)+'<div class="pgt" style="color:#AEB9D6"><span>'+(av>=MIN?'You can request a withdrawal now':rup(Math.max(0,MIN-av))+' more to unlock withdrawals')+'</span><b style="color:#fff">'+rup(MIN)+' minimum</b></div></div><div class="chs" style="margin-top:14px"><span class="chip dk2">'+rup(COMM)+' per sale</span><span class="chip dk2">50% commission</span>'+(pend?'<span class="chip dk2">'+rup(pend)+' pending withdrawal</span>':'')+'</div><div style="margin-top:18px"><button class="btn am" data-jump="lnk" style="padding:12px 22px;font-size:14px">Get my referral link</button></div></div>'
+ +'<div class="g sg4" style="margin-top:20px"><div class="c sc">'+it('users')+'<b>'+RF.length+'</b><span>People referred</span></div><div class="c sc">'+it('check')+'<b>'+sales+'</b><span>Approved sales</span></div><div class="c sc">'+it('wallet')+'<b>'+rup(tot)+'</b><span>Total earned</span></div><div class="c sc">'+it('clock')+'<b>'+rup(paid)+'</b><span>Withdrawn so far</span></div></div>'
+ +'<div style="margin-top:28px">'+sh('People you referred','Everyone who signed up with your link shows up here, so you always know who joined.')+'<div class="c">'+(RF.length?RF.map(refRow).join(''):'<div class="emp" style="padding:18px 0">'+it('users','big')+'<h3>No referrals yet</h3><p class="mut" style="margin:0 auto;max-width:420px">When a friend signs up with your link, their name appears here instantly. Once their payment is approved, '+rup(COMM)+' is added to your balance.</p></div>')+'</div></div>'
+ +'<div style="margin-top:36px">'+sh('How the affiliate program works')+'<div class="g">'+how.map((h,i)=>'<div class="c rd"><span class="rn">'+(i+1)+'</span>'+it(h[0])+'<h3 style="margin-top:14px;font-size:17px">'+h[1]+'</h3><p class="mut" style="margin:0;font-size:14px">'+h[2]+'</p></div>').join('')+'</div></div>'
+ +'<div class="g" style="margin-top:36px"><div class="c"><h3>Earnings calculator</h3><p class="mut" style="margin:0;font-size:14px">See what your referrals could add up to. This is only an illustration.</p><div class="calc"><div class="cn"><b id="cn">5</b> friends</div><input type="range" id="cr" min="1" max="50" value="5"><div class="ce" id="ce">'+rup(5*COMM)+'</div><div class="mut" style="font-size:13px">potential commission at '+rup(COMM)+' per approved sale</div></div></div><div class="c"><h3>Commission milestones</h3><p class="mut" style="margin:0 0 8px;font-size:14px">What your approved sales add up to.</p>'+tiers.map(x=>'<div class="row"><span><b>'+x[0]+' sale'+(x[0]>1?'s':'')+'</b> <span class="mut" style="font-size:13px">&middot; '+x[1]+'</span></span><b style="color:var(--p)">'+rup(x[0]*COMM)+'</b></div>').join('')+'</div></div>'
+ +'<div style="margin-top:36px">'+sh('Ready-made messages','Tap copy and paste into WhatsApp, Facebook, TikTok or Instagram. Your link is already inside.')+'<div class="g">'+caps.map((x,i)=>'<div class="c"><b>'+x[0]+'</b><p class="mut" style="font-size:14px;margin:8px 0 14px">'+esc(x[1].replace(link,'[your link]'))+'</p><button class="btn o full" data-cap="'+i+'" style="padding:11px">Copy message</button></div>').join('')+'</div></div>'
+ +'<div style="margin-top:36px" class="g"><div class="c"><h3>Tips to earn more</h3>'+['Share in WhatsApp groups and status, where friends already trust you.','Post short videos about what you are learning, then add your link in your bio.','Be honest. Show real lessons and never promise guaranteed income.','Follow up politely. Many people need a reminder before they join.'].map(t=>'<div class="ck" style="align-items:flex-start">'+ico('check',18,'#2F6BFF')+'<span style="font-weight:500;font-size:14px">'+t+'</span></div>').join('')+'</div><div class="c"><h3>Program rules</h3>'+['Commission is paid only on approved sales.','Self-referrals and fake accounts are not allowed.','No spam and no false income claims.','Withdrawals start from '+rup(MIN)+' and are paid manually.'].map(t=>'<div class="ck" style="align-items:flex-start">'+ico('shield',18,'#2F6BFF')+'<span style="font-weight:500;font-size:14px">'+t+'</span></div>').join('')+'</div></div>'
+ +'<div style="margin-top:36px">'+sh('Withdraw your earnings','Requests are reviewed and paid manually by our team.')+'<div class="g"><div class="c"><h3>New withdrawal</h3><label for="wa">Amount (Rs.)</label><input id="wa" type="number" inputmode="numeric" placeholder="Minimum '+MIN+'"><div class="hint">You can withdraw up to '+rup(av)+' right now.</div><label for="wm">Method</label><select id="wm"><option>Easypaisa</option><option>NayaPay</option></select><label for="wc">Account number</label><input id="wc" inputmode="numeric" placeholder="03XXXXXXXXX"><div class="err" id="we"></div><button class="btn full" id="wb">Request Withdrawal</button></div><div class="c"><h3>Withdrawal history</h3><div id="wh">'+(WD.length?WD.map(w=>'<div class="row"><span><b>'+rup(w.amount)+'</b><br><span class="mut" style="font-size:13px">'+esc(w.method)+(w.createdAt?.seconds?' &middot; '+new Date(w.createdAt.seconds*1000).toLocaleDateString('en-GB',{day:'numeric',month:'short'}):'')+'</span></span><span class="chip '+esc(w.status)+'">'+({pending:'Pending',paid:'Paid',rejected:'Rejected'}[w.status]||'')+'</span></div>').join(''):'<div class="mut" style="padding:14px 0">No withdrawals yet. Your requests will appear here.</div>')+'</div></div></div></div>'
+ +'<div style="margin-top:36px">'+sh('Affiliate FAQ')+faq.map(f=>'<details class="fq"><summary>'+f[0]+'</summary><p class="mut" style="margin:10px 0 0">'+f[1]+'</p></details>').join('')+'</div>'
+ +'<div style="margin-top:36px" id="lnk"><div class="promo" style="display:block"><div class="lbl" style="color:#FFB020">YOUR PERSONAL REFERRAL LINK</div><h2 style="margin-bottom:8px">Share this link. Earn '+rup(COMM)+' per sale.</h2><p style="margin:0 0 16px">Every person who joins through this link is tracked to you automatically. Your referral code is <b style="color:#fff">'+esc(code)+'</b>.</p><input id="rl" readonly value="'+esc(link)+'" style="margin-bottom:14px"><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn am" id="cp" style="flex:1 1 150px">Copy Link</button><a class="btn gh" data-sh href="https://wa.me/?text='+enc(txt+link)+'" target="_blank" rel="noopener" style="flex:1 1 150px">WhatsApp</a><a class="btn gh" data-sh href="https://www.facebook.com/sharer/sharer.php?u='+enc(link)+'" target="_blank" rel="noopener" style="flex:1 1 150px">Facebook</a><a class="btn gh" data-sh href="https://t.me/share/url?url='+enc(link)+'&text='+enc(txt)+'" target="_blank" rel="noopener" style="flex:1 1 150px">Telegram</a>'+(navigator.share?'<button class="btn gh" id="ns" style="flex:1 1 150px">More...</button>':'')+'</div></div></div>';
+ tb.onclick=e=>{const c=e.target.closest('[data-cap]'),j=e.target.closest('[data-jump]');if(c){setflg('shared');cpy(caps[+c.dataset.cap][1],c)}else if(j)document.getElementById(j.dataset.jump).scrollIntoView({behavior:'smooth',block:'center'});else if(e.target.closest('[data-sh]'))setflg('shared')};
+ $('#cp').onclick=e=>{setflg('shared');cpy(link,e.target)};
+ if($('#ns'))$('#ns').onclick=()=>{setflg('shared');navigator.share({title:'Imperia Skill',text:txt,url:link}).catch(()=>{})};
+ $('#cr').oninput=e=>{const n=+e.target.value;$('#cn').textContent=n;$('#ce').textContent=rup(n*COMM)};
+ $('#wb').onclick=async()=>{
+  const a=Number($('#wa').value),c=$('#wc').value.trim(),m=$('#wm').value,er=$('#we');
+  if(!(a>=MIN))return er.textContent='Minimum withdrawal is Rs. '+MIN+'.';
+  if(a>avail())return er.textContent='Your available balance is too low.';
+  if(!/^03\d{9}$/.test(c))return er.textContent='Enter a valid account number (03XXXXXXXXX).';
+  $('#wb').disabled=true;
+  try{await addDoc(collection(db,'withdrawals'),{uid:me.uid,amount:a,method:m,account:c,status:'pending',createdAt:serverTimestamp()});tab='aff';vDash()}
+  catch(x){$('#wb').disabled=false;er.textContent=msg(x)}
+ };
+}
+
+function tHelp(){
+ const tb=$('#tb'),since=prof.createdAt?.seconds?new Date(prof.createdAt.seconds*1000).toLocaleDateString('en-US',{day:'numeric',month:'long',year:'numeric'}):'-';
+ const faq=[['How do I watch my lessons?','Open the My Courses tab, choose a course and press play. Every video plays right inside Imperia Skill, so you never need to leave the site.'],['How do I change the video quality?','Inside a lesson you will see a Quality bar with 480p, 720p and 1080p. We start you on 1080p, and switch to 480p automatically if your internet is slow. You can change it any time.'],['The video is not playing. What should I do?','Refresh the page, switch to 480p and check your internet connection. If it still does not load, send us a message with the course and lesson name and we will fix it.'],['Do I have lifetime access?','Yes. You paid once, so your access stays active with no monthly or yearly fees.'],['Can I watch on my phone?','Yes. Imperia Skill works on mobile, tablet and computer. Just log in with the same email and password.'],['How do I mark a lesson as complete?','Open any lesson and press Mark as complete. Your progress percentage updates on your dashboard. Progress is saved on the device you use.'],['How does the affiliate program work?','Share your referral link from the Affiliate tab. When someone buys through it and we approve their payment, you earn '+rup(COMM)+'. You can withdraw from '+rup(MIN)+'.'],['I forgot my password. What now?','Log out, open the Login page and press Forgot password. We will email you a link to set a new one.']];
+ tb.innerHTML=sh('Help Center','Quick answers, support and your account details.')+'<div class="g"><div class="c supp">'+it('mail','big')+'<h3>Need a hand?</h3><p class="mut" style="margin:0 0 16px;font-size:14px">Our team replies to every message. Tell us what you need and which course or lesson it is about.</p><a class="btn full" href="mailto:'+ADMIN+'?subject='+encodeURIComponent('Imperia Skill support')+'">Email Support</a></div><div class="c"><h3>Your account</h3><div class="row"><span class="mut">Name</span><b>'+esc(dname(prof.email))+'</b></div><div class="row"><span class="mut">Status</span><span class="chip paid">Active</span></div><div class="row"><span class="mut">Access</span><b>Lifetime</b></div><div class="row"><span class="mut">Member since</span><b>'+since+'</b></div><div class="row"><span class="mut">Referral code</span><b>'+esc(prof.refCode)+'</b></div></div></div><div style="margin-top:32px">'+sh('Frequently asked questions')+faq.map(f=>'<details class="fq"><summary>'+f[0]+'</summary><p class="mut" style="margin:10px 0 0">'+f[1]+'</p></details>').join('')+'</div>';
+ tb.onclick=null;
+}
+
+/* ===== ADMIN PANEL ===== */
+const PRICE=2000;
+let AD=null,CSA=[],atab='ov',apf='submitted',awf='pending',aq='',aOpen=new Set();
+const dsn=async n=>{const q=await getDocs(query(collection(db,n),limit(500)));return q.docs.map(d=>({id:d.id,...d.data()}))};
+const tsn=x=>x.createdAt?.seconds||0;
+const fdt=s=>s?.seconds?new Date(s.seconds*1000).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'-';
+async function loadAdmin(){
+ const [u,p,w,r]=await Promise.all([dsn('users'),dsn('payments'),dsn('withdrawals'),dsn('referrals').catch(()=>[])]);
+ [u,p,w,r].forEach(a=>a.sort((x,y)=>tsn(y)-tsn(x)));
+ AD={users:u.filter(x=>String(x.email||'').toLowerCase()!==ADMIN.toLowerCase()),payments:p,withdrawals:w,referrals:r,um:Object.fromEntries(u.map(x=>[x.id,x]))};
+ CSA=await getCS();
+}
+const aem=id=>(AD.um[id]||{}).email||'(unknown)';
+const stc=s=>'<span class="chip '+({submitted:'pending',pending:'pending',approved:'paid',paid:'paid',active:'paid',rejected:'rejected'}[s]||'')+'">'+({submitted:'Pending',pending:'Pending',approved:'Approved',paid:'Paid',active:'Active',rejected:'Rejected'}[s]||esc(s))+'</span>';
+const avt=t=>'<span class="av3">'+esc(String(t||'?').charAt(0).toUpperCase())+'</span>';
+
+async function vAdmin(){
+ set('<div class="w sec" style="padding-top:28px"><div class="sp"></div></div>');
+ try{await loadAdmin()}catch(x){return set('<div class="w sec"><div class="c">Could not load admin data: '+esc(msg(x))+'</div></div>')}
+  set('<div class="w" style="padding-top:24px;padding-bottom:64px"><div class="wb adh"><div><div class="mb"><span class="dot"></span>ADMIN CONSOLE</div><h2>Imperia Skill Admin</h2><div class="sub">Manage students, payments, courses and payouts</div></div><button class="btn gh" data-a="rl" style="padding:11px 20px;font-size:14px">&#8635; Refresh data</button></div><div class="ad"><div class="asn" id="asn"></div><div class="amn" id="am"></div></div></div>');
+ $('#am').addEventListener('toggle',e=>{const d=e.target;if(d.dataset&&d.dataset.ci!==undefined)d.open?aOpen.add(d.dataset.ci):aOpen.delete(d.dataset.ci)},true);
+ renderAdmin();
+}
+function renderAdmin(){
+ const pp=AD.payments.filter(x=>x.status==='submitted').length,pw2=AD.withdrawals.filter(x=>x.status==='pending').length;
+ const T=[['ov','Overview','chart',0],['pay','Payments','wallet',pp],['wd','Withdrawals','gift',pw2],['crs','Courses','book',0],['stu','Students','users',0],['ref','Referrals','share',0],['set','Settings','shield',0]];
+ $('#asn').innerHTML=T.map(t=>'<button data-a="nav" data-t="'+t[0]+'" class="'+(atab===t[0]?'on':'')+'">'+ico(t[2],18)+'<span>'+t[1]+'</span>'+(t[3]?'<b>'+t[3]+'</b>':'')+'</button>').join('');
+ ({ov:aOv,pay:aPay,wd:aWd,crs:aCrs,stu:aStu,ref:aRef,set:aSet}[atab]||aOv)();
+}
+
+function aOv(){
+ const U=AD.users,act=U.filter(x=>x.status==='active').length,pP=AD.payments.filter(x=>x.status==='submitted'),pW=AD.withdrawals.filter(x=>x.status==='pending'),appr=AD.payments.filter(x=>x.status==='approved').length,owed=U.reduce((a,x)=>a+(+x.balance||0),0),paidOut=AD.withdrawals.filter(x=>x.status==='paid').reduce((a,x)=>a+(+x.amount||0),0),lessons=CSA.reduce((a,c)=>a+(c.lessons||[]).length,0);
+ const days=[...Array(7)].map((_,k)=>{const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-(6-k));return d});
+ const cnt=days.map(d=>U.filter(x=>{const t=tsn(x)*1000;return t>=d.getTime()&&t<d.getTime()+864e5}).length),mx=Math.max(1,...cnt);
+ const kp=(i,l,v,s)=>'<div class="c kp">'+it(i)+'<div><span>'+l+'</span><b>'+v+'</b>'+(s?'<em>'+s+'</em>':'')+'</div></div>';
+ $('#am').innerHTML='<div class="g kg">'+kp('users','Total students',U.length,act+' active')+kp('wallet','Revenue (approved)',rup(appr*PRICE),appr+' approved sales')+kp('clock','Pending payments',pP.length,pP.length?'Needs your review':'All clear')+kp('gift','Pending withdrawals',pW.length,rup(pW.reduce((a,x)=>a+(+x.amount||0),0)))+kp('share','Commission owed',rup(owed),'Student balances')+kp('check','Total paid out',rup(paidOut),'Withdrawals paid')+'</div>'
+ +'<div class="g" style="margin-top:20px"><div class="c"><h3>New students &middot; last 7 days</h3><div class="bars">'+cnt.map((n,k)=>'<div><b>'+n+'</b><i style="height:'+Math.max(4,Math.round(n*100/mx))+'px"></i><span>'+days[k].toLocaleDateString('en-US',{weekday:'short'})+'</span></div>').join('')+'</div></div><div class="c"><h3>Needs attention</h3><div class="row" style="border:0"><span>Payments waiting for approval</span><button class="btn o sm" data-a="nav" data-t="pay">'+pP.length+' &rarr;</button></div><div class="row"><span>Withdrawals waiting to be paid</span><button class="btn o sm" data-a="nav" data-t="wd">'+pW.length+' &rarr;</button></div><div class="row"><span>Courses &middot; lessons published</span><button class="btn o sm" data-a="nav" data-t="crs">'+CSA.length+' &middot; '+lessons+' &rarr;</button></div></div></div>'
+ +'<div class="c" style="margin-top:20px"><h3>Recent signups</h3>'+(U.slice(0,6).map(x=>'<div class="row" style="align-items:center"><span style="display:flex;gap:12px;align-items:center">'+avt(x.email)+'<span><b>'+esc(dname(x.email))+'</b><br><span class="mut" style="font-size:13px">'+esc(x.email)+'</span></span></span><span style="text-align:right">'+stc(x.status)+'<br><span class="mut" style="font-size:12px">'+fdt(x.createdAt)+'</span></span></div>').join('')||'<div class="mut">No students yet.</div>')+'</div>';
+}
+
+function aPay(){
+ const F=[['submitted','Pending'],['approved','Approved'],['rejected','Rejected'],['all','All']],q=aq.toLowerCase();
+ let L=AD.payments.filter(x=>apf==='all'||x.status===apf).filter(x=>!q||(aem(x.id)+' '+(x.txnId||'')+' '+(x.senderNumber||'')).toLowerCase().includes(q));
+ $('#am').innerHTML='<div class="sh"><h3>Payments</h3><p>Check the Transaction ID in your Easypaisa / NayaPay app, then approve.</p></div><div class="fbar">'+F.map(f=>'<button data-a="pf" data-v="'+f[0]+'" class="'+(apf===f[0]?'on':'')+'">'+f[1]+' <i>'+(f[0]==='all'?AD.payments.length:AD.payments.filter(x=>x.status===f[0]).length)+'</i></button>').join('')+'</div><input id="aqi" placeholder="Search email, Transaction ID or number..." value="'+esc(aq)+'" style="margin:14px 0">'
+ +(L.length?L.map(x=>{const u=AD.um[x.id]||{},ref=u.referredBy?AD.um[u.referredBy]:null;return '<div class="c pc"><div class="pt">'+avt(u.email)+'<div style="flex:1;min-width:0"><b style="word-break:break-all">'+esc(aem(x.id))+'</b><div class="mut" style="font-size:13px">'+fdt(x.createdAt)+'</div></div>'+stc(x.status)+'</div><div class="pg2"><div><span>Transaction ID</span><b>'+esc(x.txnId)+'</b></div><div><span>Sender number</span><b>'+esc(x.senderNumber)+'</b></div><div><span>Amount expected</span><b>'+rup(PRICE)+'</b></div><div><span>Referred by</span><b>'+(ref?esc(dname(ref.email)):'Direct signup')+'</b></div></div>'+(ref&&x.status==='submitted'?'<div class="note">Approving adds <b>'+rup(COMM)+'</b> commission to '+esc(ref.email)+'.</div>':'')+(x.status==='submitted'?'<div style="display:flex;gap:10px;margin-top:14px"><button class="btn" data-a="ap" data-id="'+x.id+'" style="flex:1">Approve &amp; unlock</button><button class="btn o" data-a="rp" data-id="'+x.id+'" style="flex:1">Reject</button><button class="btn o sm" data-a="cp" data-v="'+esc(x.txnId)+'">Copy ID</button></div>':'')+'</div>'}).join(''):'<div class="c emp">'+it('check','big')+'<h3>Nothing here</h3><p class="mut" style="margin:0">No payments match this filter.</p></div>');
+ $('#aqi').oninput=e=>{aq=e.target.value;const p=e.target.selectionStart;aPay();const i=$('#aqi');i.focus();i.setSelectionRange(p,p)};
+}
+
+function aWd(){
+ const F=[['pending','Pending'],['paid','Paid'],['rejected','Rejected'],['all','All']];
+ const L=AD.withdrawals.filter(x=>awf==='all'||x.status===awf);
+ $('#am').innerHTML='<div class="sh"><h3>Withdrawals</h3><p>Send the money first from your Easypaisa / NayaPay, then press Mark as paid.</p></div><div class="fbar">'+F.map(f=>'<button data-a="wf" data-v="'+f[0]+'" class="'+(awf===f[0]?'on':'')+'">'+f[1]+' <i>'+(f[0]==='all'?AD.withdrawals.length:AD.withdrawals.filter(x=>x.status===f[0]).length)+'</i></button>').join('')+'</div><div style="margin-top:14px">'
+ +(L.length?L.map(x=>'<div class="c pc"><div class="pt">'+avt(aem(x.uid))+'<div style="flex:1;min-width:0"><b style="word-break:break-all">'+esc(aem(x.uid))+'</b><div class="mut" style="font-size:13px">'+fdt(x.createdAt)+'</div></div>'+stc(x.status)+'</div><div class="pg2"><div><span>Amount</span><b style="color:var(--p);font-size:20px">'+rup(x.amount)+'</b></div><div><span>Method</span><b>'+esc(x.method)+'</b></div><div><span>Account number</span><b>'+esc(x.account)+'</b></div><div><span>Student balance</span><b>'+rup((AD.um[x.uid]||{}).balance)+'</b></div></div>'+(x.status==='pending'?'<div style="display:flex;gap:10px;margin-top:14px"><button class="btn" data-a="aw" data-id="'+x.id+'" style="flex:1">Mark as paid</button><button class="btn o" data-a="rw" data-id="'+x.id+'" style="flex:1">Reject</button><button class="btn o sm" data-a="cp" data-v="'+esc(x.account)+'">Copy no.</button></div>':'')+'</div>').join(''):'<div class="c emp">'+it('gift','big')+'<h3>Nothing here</h3><p class="mut" style="margin:0">No withdrawals match this filter.</p></div>')+'</div>';
+}
+
+const lessonRow=(i,j,l,n)=>'<div class="lr" data-lr="'+i+'-'+j+'"><div class="lh"><span class="pn">'+(j+1)+'</span><input data-f="t" value="'+esc(l.title)+'" placeholder="Lesson title"></div><input data-f="u" value="'+esc(l.url)+'" placeholder="Main video link (1080p / auto)"><details class="ql2"><summary>Quality links (optional)</summary><input data-f="u720" value="'+esc(l.u720||'')+'" placeholder="720p video link"><input data-f="u480" value="'+esc(l.u480||'')+'" placeholder="480p video link"></details><div class="la2"><button class="btn sm" data-a="ls" data-i="'+i+'" data-j="'+j+'">Save</button><button class="btn o sm" data-a="lm" data-d="-1" data-i="'+i+'" data-j="'+j+'"'+(j===0?' disabled':'')+'>&uarr;</button><button class="btn o sm" data-a="lm" data-d="1" data-i="'+i+'" data-j="'+j+'"'+(j===n-1?' disabled':'')+'>&darr;</button><button class="btn o sm dng" data-a="dl" data-i="'+i+'" data-j="'+j+'">Delete</button></div><div class="err" style="min-height:0;margin:6px 0 0"></div></div>';
+
+function aCrs(){
+ $('#am').innerHTML='<div class="sh"><h3>Courses</h3><p>Create a course, then add its lessons. Students see every part in order and watch inside the site.</p></div>'
+ +'<div class="c" style="margin-bottom:20px"><h3>Create a new course</h3><div class="g"><div><label for="nct">Course name</label><input id="nct" placeholder="e.g. TikTok Automation"></div><div><label for="ncu">Thumbnail image link (optional)</label><input id="ncu" placeholder="https://... or a Google Drive image link"></div></div><label for="ncd">Short description</label><input id="ncd" placeholder="One or two lines about the course"><div class="hint">Leave the thumbnail empty and a premium cover is created automatically from the course name.</div><div class="err" id="nce"></div><button class="btn" data-a="ac">Create course</button></div>'
+ +(CSA.length?CSA.map((c,i)=>{const L=c.lessons||[];return '<details class="c acd" data-ci="'+i+'"'+(aOpen.has(String(i))?' open':'')+'><summary><div class="am1">'+thumb(c,i)+'</div><div style="flex:1;min-width:0"><b style="font-size:17px">'+esc(c.title)+'</b><div class="mut" style="font-size:13px">'+L.length+' lesson'+(L.length===1?'':'s')+'</div></div><span class="chev">&#9662;</span></summary><div class="acb"><div class="g"><div><label>Course name</label><input data-cf="t" data-ci="'+i+'" value="'+esc(c.title)+'"></div><div><label>Thumbnail link</label><input data-cf="u" data-ci="'+i+'" value="'+esc(c.thumb||'')+'" placeholder="https://..."></div></div><label>Description</label><input data-cf="d" data-ci="'+i+'" value="'+esc(c.desc||'')+'"><div class="err" data-ce="'+i+'"></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" data-a="sc" data-i="'+i+'">Save details</button><button class="btn o sm" data-a="mc" data-d="-1" data-i="'+i+'"'+(i===0?' disabled':'')+'>Move up</button><button class="btn o sm" data-a="mc" data-d="1" data-i="'+i+'"'+(i===CSA.length-1?' disabled':'')+'>Move down</button><button class="btn o sm dng" data-a="dc" data-i="'+i+'">Delete course</button></div><div class="hr"></div><h3 style="font-size:17px">Lessons (parts)</h3>'+(L.length?L.map((l,j)=>lessonRow(i,j,l,L.length)).join(''):'<div class="mut" style="margin:6px 0 14px">No lessons yet. Add the first ones below.</div>')+'<div class="bulk"><h3 style="font-size:16px">Add lessons</h3><p class="mut" style="margin:0 0 8px;font-size:13px">One lesson per line: <code>Title | video link</code>. Or paste only links and they become Part 1, Part 2... automatically. For quality options use <code>Title | 1080p link | 720p link | 480p link</code>.</p><textarea data-bk="'+i+'" rows="5" placeholder="Part 1 Introduction | https://drive.google.com/file/d/.../view\nPart 2 Setup | https://youtu.be/..."></textarea><div class="err" data-be="'+i+'"></div><button class="btn" data-a="ab" data-i="'+i+'">Add lessons</button></div></div></details>'}).join(''):'<div class="c emp">'+it('book','big')+'<h3>No courses yet</h3><p class="mut" style="margin:0">Create your first course above.</p></div>');
+}
+
+function aStu(){
+ const q=aq.toLowerCase(),L=AD.users.filter(x=>!q||String(x.email).toLowerCase().includes(q)),rc={};AD.referrals.forEach(r=>{rc[r.referrerUid]=(rc[r.referrerUid]||0)+1});
+ $('#am').innerHTML='<div class="sh"><h3>Students</h3><p>'+AD.users.length+' registered &middot; '+AD.users.filter(x=>x.status==='active').length+' active</p></div><input id="aqi" placeholder="Search by email..." value="'+esc(aq)+'" style="margin-bottom:14px">'
+ +(L.length?L.map(x=>{const by=x.referredBy?AD.um[x.referredBy]:null;return '<div class="c pc"><div class="pt">'+avt(x.email)+'<div style="flex:1;min-width:0"><b>'+esc(dname(x.email))+'</b><div class="mut" style="font-size:13px;word-break:break-all">'+esc(x.email)+'</div></div>'+stc(x.status)+'</div><div class="pg2"><div><span>Joined</span><b>'+fdt(x.createdAt)+'</b></div><div><span>Referred by</span><b>'+(by?esc(dname(by.email)):'Direct')+'</b></div><div><span>Referrals made</span><b>'+(rc[x.id]||0)+'</b></div><div><span>Balance</span><b>'+rup(x.balance)+'</b></div></div><div style="display:flex;gap:10px;margin-top:14px">'+(x.status==='active'?'<button class="btn o sm dng" data-a="rv" data-id="'+x.id+'">Revoke access</button>':'<button class="btn sm" data-a="ua" data-id="'+x.id+'">Activate manually</button>')+'</div></div>'}).join(''):'<div class="c emp">'+it('users','big')+'<h3>No students found</h3></div>');
+ $('#aqi').oninput=e=>{aq=e.target.value;const p=e.target.selectionStart;aStu();const i=$('#aqi');i.focus();i.setSelectionRange(p,p)};
+}
+
+function aRef(){
+ const R=AD.referrals,g={};R.forEach(r=>{const k=r.referrerUid;(g[k]=g[k]||{n:0,a:0,e:0});g[k].n++;if(r.status==='approved'){g[k].a++;g[k].e+=(+r.commission||0)}});
+ const top=Object.entries(g).sort((x,y)=>y[1].a-x[1].a||y[1].n-x[1].n).slice(0,10);
+ $('#am').innerHTML='<div class="sh"><h3>Referrals</h3><p>See exactly who joined through whose link, and what commission was credited.</p></div><div class="g kg"><div class="c kp">'+it('users')+'<div><span>Total referrals</span><b>'+R.length+'</b></div></div><div class="c kp">'+it('check')+'<div><span>Approved</span><b>'+R.filter(r=>r.status==='approved').length+'</b></div></div><div class="c kp">'+it('wallet')+'<div><span>Commission credited</span><b>'+rup(R.reduce((a,r)=>a+(+r.commission||0),0))+'</b></div></div></div>'
+ +'<div class="c" style="margin-top:20px"><h3>Top affiliates</h3>'+(top.length?top.map(([k,v],n)=>'<div class="row" style="align-items:center"><span style="display:flex;gap:12px;align-items:center"><span class="pn">'+(n+1)+'</span><span><b>'+esc(dname(aem(k)))+'</b><br><span class="mut" style="font-size:13px">'+esc(aem(k))+'</span></span></span><span style="text-align:right"><b>'+v.a+' approved</b> / '+v.n+'<br><span style="color:#067647;font-size:13px;font-weight:700">'+rup(v.e)+' earned</span></span></div>').join(''):'<div class="mut">No referrals yet.</div>')+'</div>'
+ +'<div class="c" style="margin-top:20px"><h3>All referral records</h3>'+(R.length?R.map(r=>'<div class="row" style="align-items:center"><span><b>'+esc(r.name||dname(aem(r.id)))+'</b> <span class="mut">joined via</span> <b>'+esc(dname(aem(r.referrerUid)))+'</b><br><span class="mut" style="font-size:13px">'+esc(aem(r.id))+' &middot; '+fdt(r.createdAt)+'</span></span><span style="text-align:right">'+stc(r.status)+(r.status==='approved'?'<br><b style="color:#067647;font-size:13px">+'+rup(r.commission||0)+'</b>':'')+'</span></div>').join(''):'<div class="mut">Referral records appear here when someone signs up with a referral link. If you expected some, make sure the latest Firestore rules are published.</div>')+'</div>';
+}
+
+function aSet(){
+ $('#am').innerHTML='<div class="sh"><h3>Settings</h3><p>Payment details are shown to students right after they sign up.</p></div><div class="g"><div class="c"><h3>Payment details</h3><label for="pn">Account name</label><input id="pn"><label for="pm">Easypaisa / NayaPay number</label><input id="pm" inputmode="numeric" placeholder="03XXXXXXXXX"><div class="err" id="pe"></div><button class="btn full" data-a="sp">Save payment details</button></div><div class="c"><h3>Program settings</h3><div class="row" style="border:0"><span class="mut">Course price</span><b>'+rup(PRICE)+'</b></div><div class="row"><span class="mut">Affiliate commission</span><b>'+rup(COMM)+' (50%)</b></div><div class="row"><span class="mut">Minimum withdrawal</span><b>'+rup(MIN)+'</b></div><div class="row"><span class="mut">Admin account</span><b style="word-break:break-all;text-align:right">'+esc(ADMIN)+'</b></div><p class="mut" style="font-size:13px;margin:12px 0 0">Prices and limits are set in the site code and enforced by the database rules.</p></div></div>';
+ getDoc(doc(db,'config','payment')).then(s=>{const d=s.data()||{};if($('#pn')){$('#pn').value=d.name||'';$('#pm').value=d.number||''}}).catch(()=>{});
+}
+
+const parseBulk=(t,start)=>{const isU=s=>/^https?:\/\//i.test(s),out=[];const lines=t.split('\n').map(x=>x.trim()).filter(Boolean);
+ for(let k=0;k<lines.length;k++){const p=lines[k].split('|').map(s=>s.trim()),hasT=!isU(p[0]),title=hasT?p[0]:'Part '+(start+out.length+1),links=hasT?p.slice(1):p;
+  if(!links[0]||!embed(links[0]))throw new Error('Line '+(k+1)+': a valid Google Drive or YouTube link is missing.');
+  const o={title:title||'Part '+(start+out.length+1),url:links[0],u720:'',u480:''};
+  if(links[1]){if(!embed(links[1]))throw new Error('Line '+(k+1)+': the 720p link is not valid.');o.u720=links[1]}
+  if(links[2]){if(!embed(links[2]))throw new Error('Line '+(k+1)+': the 480p link is not valid.');o.u480=links[2]}
+  out.push(o)}
+ return out};
+const mv=(arr,j,d)=>{const k=j+d;if(k<0||k>=arr.length)return;[arr[j],arr[k]]=[arr[k],arr[j]]};
+
+app.addEventListener('click',async e=>{
+ const b=e.target.closest('[data-a]');if(!b||!isAdmin()||!AD)return;
+ const a=b.dataset.a,id=b.dataset.id,i=+b.dataset.i,j=+b.dataset.j;
+ if(a==='nav'){atab=b.dataset.t;aq='';renderAdmin();scrollTo({top:0,behavior:'smooth'});return}
+ if(a==='pf'){apf=b.dataset.v;renderAdmin();return}
+ if(a==='wf'){awf=b.dataset.v;renderAdmin();return}
+ if(a==='cp'){cpy(b.dataset.v,b);return}
+ const reload=async()=>{const y=scrollY;await loadAdmin();renderAdmin();scrollTo(0,y)};
+ const val=(sel,root=document)=>{const n=root.querySelector(sel);return n?n.value.trim():''};
+ const saveC=async fn=>{const C=await getCS();fn(C);await saveCS(C);CSA=C;const y=scrollY;renderAdmin();scrollTo(0,y)};
+ b.disabled=true;
+ try{
+  if(a==='rl'){await reload()}
+  else if(a==='ap'){await approvePayment(id);await reload()}
+  else if(a==='rp'){if(!confirm('Reject this payment?')){b.disabled=false;return}await updateDoc(doc(db,'payments',id),{status:'rejected'});await reload()}
+  else if(a==='aw'){await approveWithdrawal(id);await reload()}
+  else if(a==='rw'){if(!confirm('Reject this withdrawal?')){b.disabled=false;return}await updateDoc(doc(db,'withdrawals',id),{status:'rejected'});await reload()}
+  else if(a==='ua'){if(!confirm('Activate this student without a payment? No commission will be paid.')){b.disabled=false;return}await updateDoc(doc(db,'users',id),{status:'active'});await reload()}
+  else if(a==='rv'){if(!confirm('Remove this student\'s access?')){b.disabled=false;return}await updateDoc(doc(db,'users',id),{status:'pending'});await reload()}
+  else if(a==='sp'){const n=val('#pn'),m=val('#pm'),pe=$('#pe');pe.style.color='';if(!n||!/^03\d{9}$/.test(m)){pe.textContent='Enter a name and a valid number (03XXXXXXXXX).';b.disabled=false;return}await setDoc(doc(db,'config','payment'),{name:n,number:m});pe.style.color='#067647';pe.textContent='Saved. Students will see the new details.';b.disabled=false}
+  else if(a==='ac'){const t=val('#nct'),d=val('#ncd'),u=val('#ncu'),er=$('#nce');if(!t){er.textContent='Please enter the course name.';b.disabled=false;return}if(u&&!/^https:\/\//.test(u)){er.textContent='The thumbnail link must start with https://';b.disabled=false;return}await saveC(C=>C.push({title:t,desc:d,thumb:u,lessons:[]}));aOpen.add(String(CSA.length-1));renderAdmin()}
+  else if(a==='sc'){const r=b.closest('.acb'),t=val('[data-cf=t]',r),d=val('[data-cf=d]',r),u=val('[data-cf=u]',r),er=r.querySelector('[data-ce]');if(!t){er.textContent='Course name cannot be empty.';b.disabled=false;return}if(u&&!/^https:\/\//.test(u)){er.textContent='The thumbnail link must start with https://';b.disabled=false;return}await saveC(C=>{Object.assign(C[i],{title:t,desc:d,thumb:u})})}
+  else if(a==='dc'){if(!confirm('Delete this whole course and all its lessons?')){b.disabled=false;return}aOpen.delete(String(i));await saveC(C=>C.splice(i,1))}
+  else if(a==='mc'){await saveC(C=>mv(C,i,+b.dataset.d))}
+  else if(a==='ls'){const r=b.closest('.lr'),er=r.querySelector('.err'),o={title:val('[data-f=t]',r),url:val('[data-f=u]',r),u720:val('[data-f=u720]',r),u480:val('[data-f=u480]',r)};
+   if(!o.title||!embed(o.url)||(o.u720&&!embed(o.u720))||(o.u480&&!embed(o.u480))){er.textContent='Enter a title and valid Google Drive or YouTube links.';b.disabled=false;return}
+   await saveC(C=>{C[i].lessons[j]=o})}
+  else if(a==='lm'){await saveC(C=>mv(C[i].lessons,j,+b.dataset.d))}
+  else if(a==='dl'){if(!confirm('Delete this lesson?')){b.disabled=false;return}await saveC(C=>C[i].lessons.splice(j,1))}
+  else if(a==='ab'){const r=b.closest('.bulk'),er=r.querySelector('[data-be]'),t=r.querySelector('textarea').value;er.textContent='';
+   let add;try{add=parseBulk(t,(CSA[i].lessons||[]).length);if(!add.length)throw new Error('Paste at least one lesson line.')}catch(x){er.textContent=x.message;b.disabled=false;return}
+   aOpen.add(String(i));await saveC(C=>{C[i].lessons=(C[i].lessons||[]).concat(add)})}
+ }catch(x){alert(msg(x));b.disabled=false}
+});
+
+async function approvePayment(uid){
+ await runTransaction(db,async t=>{
+  const uR=doc(db,'users',uid),pR=doc(db,'payments',uid),fR=doc(db,'referrals',uid),u=await t.get(uR),p=await t.get(pR);
+  if(p.data().status!=='submitted')throw new Error('This payment was already handled.');
+  const ru=u.data().referredBy,rR=ru?doc(db,'users',ru):null,r=rR?await t.get(rR):null,f=await t.get(fR);
+  const pay=!!(r&&r.data().status==='active');
+  t.update(pR,{status:'approved'});t.update(uR,{status:'active'});
+  if(pay)t.update(rR,{balance:increment(COMM)});
+  if(f.exists())t.update(fR,{status:'approved',commission:pay?COMM:0,approvedAt:serverTimestamp()});
+ });
+}
+async function approveWithdrawal(id){
+ await runTransaction(db,async t=>{
+  const wR=doc(db,'withdrawals',id),w=await t.get(wR),uR=doc(db,'users',w.data().uid),u=await t.get(uR);
+  if(w.data().status!=='pending'||u.data().balance<w.data().amount)throw new Error('This withdrawal cannot be approved (already handled or balance too low).');
+  t.update(wR,{status:'paid'});t.update(uR,{balance:increment(-w.data().amount)});
+ });
+}
+
+</script>
+</body>
+</html>
